@@ -1,0 +1,220 @@
+body {
+  background-color: #d8d8d8;
+}
+
+a {
+  color: #3f729b;
+}
+  a:hover {
+    color: #1c5380;
+  }
+
+.text-muted {
+  color: #90939a;
+}
+
+.navbar {
+  min-height: 50px;
+  border: 0;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
+}
+  .navbar-header {
+    float: left;
+    padding-left: 15px;
+  }
+  .navbar-brand {
+    height: 50px;
+    padding: 0 15px;
+    font-size: 18px;
+    line-height: 50px;
+    font-weight: bold;
+  }
+  .navbar-nav {
+    float: left;
+    margin: 0;
+  }
+  .navbar-nav > li {
+    float: left;
+  }
+  .navbar-nav > li > a {
+    padding: 0 15px;
+    line-height: 50px;
+  }
+  .navbar-text {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+.panel{
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .26);
+}
+
+.center-form {
+  width: 315px;
+  margin: 10% auto;
+}
+
+.signup-or-separator {
+  position: relative;
+  height: 29px;
+  margin: 5px 0;
+  text-align: center;
+  background: none;
+}
+
+.signup-or-separator hr {
+  width: 90%;
+  margin: -16px auto 10px auto;
+  border-top: 1px solid #dce0e0;
+}
+
+.signup-or-separator .text {
+  display: inline-block;
+  padding: 8px;
+  margin: 0;
+  background-color: #fff;
+}
+
+.has-feedback .form-control-feedback {
+  top: 0;
+  left: 0;
+  width: 46px;
+  height: 46px;
+  line-height: 46px;
+  color: #555;
+}
+
+.has-feedback .form-control {
+  padding-left: 42px;
+}
+
+.media-object {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+}
+
+.media-heading {
+  display: block;
+  margin: 0;
+  color: #3f729b;
+}
+
+.media-heading:hover {
+  color: #1c5380;
+}
+
+.soften {
+  height: 1px;
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .1), rgba(0, 0, 0, 0));
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .1), rgba(0, 0, 0, 0));
+  background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .1), rgba(0, 0, 0, 0));
+  border: 0;
+}
+
+.thumbnail {
+  border: 0;
+  border-radius: 0;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .04),0 1px 5px rgba(0, 0, 0, .1);
+}
+
+.alert-error {
+  position: fixed;
+  right: 12px;
+  bottom: 12px;
+  z-index: 1;
+  display: inline-block;
+  min-height: 48px;
+  padding: 13px 24px 12px 24px;
+  font-family: 'Roboto', sans-serif;
+  color: #f1f1f1;
+  cursor: default;
+  background: red;
+  border-radius: 3px;
+  outline: none;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.alert-error > .close {
+  margin-left: 12px;
+}
+
+
+.alert-material {
+  position: fixed;
+  right: 12px;
+  bottom: 12px;
+  z-index: 1;
+  display: inline-block;
+  min-height: 48px;
+  padding: 13px 24px 12px 24px;
+  font-family: 'Roboto', sans-serif;
+  color: #f1f1f1;
+  cursor: default;
+  background: #323232;
+  border-radius: 2px;
+  outline: none;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.alert-material > .close {
+  margin-left: 12px;
+  color: white;
+}
+
+.fadeZoom.ng-enter {
+  -webkit-animation-duration: 0.6s, 0.2s;
+  -moz-animation-duration: 0.2s, 0.2s;
+  -ms-animation-duration: 0.2s, 0.2s;
+  animation-duration: 0.2, 0.2s;
+  -webkit-animation-name: fadeIn, zoomIn;
+  -moz-animation-name: fadeIn, zoomIn;
+  -ms-animation-name: fadeIn, zoomIn;
+  animation-name: fadeIn, zoomIn;
+}
+
+.fadeZoomFadeDown.ng-enter {
+  -webkit-animation-duration: 0.2s, 0.2s;
+  -moz-animation-duration: 0.2s, 0.2s;
+  -ms-animation-duration: 0.2s, 0.2s;
+  animation-duration: 0.2s, 0.2s;
+  -webkit-animation-name: fadeIn, zoomIn;
+  -moz-animation-name: fadeIn, zoomIn;
+  -ms-animation-name: fadeIn, zoomIn;
+  animation-name: fadeIn, zoomIn;
+}
+
+.fadeZoomFadeDown.ng-leave {
+  -webkit-animation: fadeOutDown 0.2s;
+  -moz-animation: fadeOutDown 0.2s;
+  -ms-animation: fadeOutDown 0.2s;
+  animation: fadeOutDown 0.2s;
+}
+
+@-webkit-keyframes zoomIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.8, 0.8, 0.8);
+    -moz-transform: scale3d(0.8, 0.8, 0.8);
+    -ms-transform: scale3d(0.8, 0.8, 0.8);
+    transform: scale3d(0.8, 0.8, 0.8);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.8, 0.8, 0.8);
+    -moz-transform: scale3d(0.8, 0.8, 0.8);
+    -ms-transform: scale3d(0.8, 0.8, 0.8);
+    transform: scale3d(0.8, 0.8, 0.8);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
