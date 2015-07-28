@@ -1,17 +1,17 @@
 
-var mongoose = require('mongoose'), 
+var mongoose = require('mongoose'),
 Schema = mongoose.Schema;
-
 
 // MEAL SCHEMA (additional Ingredients available as recipe as well)
 var MealSchema = Schema({
 
 	name: String,
-	recipes: [{type: Schema.ObjectId, ref: 'Recipe'}],
-	ingredients: [{type: Schema.ObjectId, ref: 'BaseIngredient'}],
-	_menuID: [{type: Schema.ObjectId, ref: 'Menu'}],
+	_recipes: [{type: Schema.Types.ObjectId, ref: 'Recipe'}],
+	ingredients: ['ingredient'],
+	_menus: [{type: Schema.Types.ObjectId, ref: 'Menu'}],
 	price: Number,
 	picture: String,
+	category: String,
 	available: {type: Boolean, default: true},
 	created_at: {type: Date, default: Date.now},
 	updated_at: {type: Date, default: Date.now}
