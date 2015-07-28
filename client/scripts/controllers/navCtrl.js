@@ -1,6 +1,6 @@
 var app = angular.module('app');
 
-app.controller('navCtrl', function($scope, $auth){
+app.controller('navCtrl', function($scope, $location, $auth){
   $scope.init = function(){
     $scope.navList = [
       {name: "About", href: "#/about"}

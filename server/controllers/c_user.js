@@ -79,8 +79,10 @@ module.exports = (function(){
       },
 
       getUser : function(req, res){
+
         User.findById(req.user, function(err, user) {
           if(err) return res.status(401).send();
+
           res.status(200).send({
             userid: user._id,
             username: user.username,

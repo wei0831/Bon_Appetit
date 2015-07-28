@@ -3,7 +3,7 @@ var app = angular.module('app');
 app.controller('userCtrl', function($scope, $alert, mainFactory) {
 
   $scope.getProfile = function() {
-    boardFactory.getProfile()
+    mainFactory.getProfile()
       .success(function(data) {
         $scope.user = data;
       })
