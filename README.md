@@ -3,6 +3,12 @@ CodingDojo 2015 Full Mean Stack Project
 
 Modified Date: 07/27/2015
 
+##To Run
+Run the following command
+```
+npm install && bower install & grunt default
+```
+
 ##Technology Used
 - Nodejs
 - Express.js
