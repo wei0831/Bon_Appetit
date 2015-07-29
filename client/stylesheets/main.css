@@ -13,6 +13,10 @@ a {
   color: #90939a;
 }
 
+.navActive{
+  background-color: grey;
+}
+
 .navbar {
   min-height: 50px;
   border: 0;
@@ -249,7 +253,7 @@ background:transparent !important;
 border:none !important;
 }
 .ui-slider .ui-slider-handle label{
-    
+
     background: lightgray;
     border-radius: 20px;
     width:5.2em;
@@ -262,16 +266,16 @@ border:none !important;
   height: 100px;
   cursor: default;
   margin: 0px -40px !important;
-  text-align: center; 
+  text-align: center;
   line-height: 35px;
   color: #FFFFFF;
   font-size: 15px;
-    
+
 }
 
 .ui-slider .ui-slider-handle .glyphicon {
   color: #FFFFFF;
-  margin: 0 3px; 
+  margin: 0 3px;
   font-size: 11px;
   opacity: 0.5;
 }
@@ -313,4 +317,3 @@ border:none !important;
   color: #7f8c8d;
   font-size: 13px;
 }
-

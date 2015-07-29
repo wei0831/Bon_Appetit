@@ -1,5 +1,5 @@
 <div class="row container-fluid">
-        
+
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 dashboard-tab-container">
 
 			<!-- SIDE TAB BUTTONS -->
@@ -17,12 +17,12 @@
                 <a href="#" class="list-group-item text-center">
                   <h4 class="icon icon-bin fs1"></h4><br/>Remove product
                 </a>
-            
+
               </div>
             </div>
             <!-- END OF TAB BUTTON -->
 
-			<!-- MAIN PART -->	
+			<!-- MAIN PART -->
             <div class="col-lg-11 col-md-10 col-sm-10 col-xs-9 dashboard-tab">
                 <!-- view all section -->
                 <div class="dashboard-tab-content active">
@@ -35,37 +35,37 @@
 
                 <!-- add product section -->
                 <div class="dashboard-tab-content" ng-controller="AppController" nv-file-drop="" uploader="uploader">
-                   
+
 				<div class="row">
 					<!-- LEFT part -->
                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <center>
-                    	
+
 
                     <form>
                     	<h3 class="text-left">Add Product</h3>
-						  
+
 						  <div class="form-group text-left">
 						    <label class="left">Product name:</label>
 						    <input type="text" class="form-control" placeholder="name">
 						  </div>
-						
-				
+
+
 					<div class="form-group text-left">
 					   <label>Calorie</label>
 						    <input id="calorie" class="form-control" placeholder="calorie">
 					</div>
-					
+
 					<br>
 
-					
+
 					 <div class="price-slider">
 			            <div class="col-sm-12">
 
 			             <div id="slider"></div>
 			            </div>
 			          </div>
-				
+
 
 			 		<div class="form-group text-left">
 					    <label>Price</label>
@@ -78,26 +78,26 @@
 			             <div id="slider2"></div>
 			            </div>
 			          </div>
-			
 
-						
-						  
+
+
+
 						</form>
-					
-             
+
+
                     </center>
                 </div>
                 <!-- end of LEFT PART -->
-				
+
 				<!-- RIGTH PART -->
 
 				<!-- IMAGE UPLOAD -->
 
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                	
+
                    <h3>Upload photos</h3>
 
-                   
+
                         <!-- 3. nv-file-over uploader="link" over-class="className" -->
                         <div id="dropzone" class="my-drop-zone well" nv-file-over="" uploader="uploader">
                             Base drop zone
@@ -108,20 +108,20 @@
                     <input  type="file" nv-file-select="" uploader="uploader" multiple />
                     <br/>
 
-              	
 
-				
+
+
 
 
 				 <div style="margin-bottom: 40px">
-                  
+
                     <p>Queue length: {{ uploader.queue.length }}</p>
 
                     <table class="table">
                         <thead>
                             <tr>
                                 <th width="25%">Name</th>
-                          
+
                                 <th ng-show="uploader.isHTML5">Progress</th>
                                 <th>Status</th>
                                 <th>Actions</th>
@@ -131,11 +131,11 @@
                             <tr ng-repeat="item in uploader.queue">
                                 <td>
                                     <strong>{{ item.file.name }}</strong>
-                              
+
                                     <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }"></div>
-                                 
+
                                 </td>
-                             
+
                                 <td ng-show="uploader.isHTML5">
                                     <div class="progress" style="margin-bottom: 0;">
                                         <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
@@ -150,7 +150,7 @@
                                     <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
                                         <span class="glyphicon glyphicon-upload"></span> Upload
                                     </button>
-                          
+
                                     <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
                                         <span class="glyphicon glyphicon-trash"></span> Remove
                                     </button>
@@ -179,17 +179,17 @@
 
                 </div>
 
-	
+
 
                 </div>
                 <!-- end of RIGHT part -->
 
-			
-					
-				
+
+
+
                 </div>
                 <!-- end of row -->
-               	
+
                	<div class="row">
                		<div class="col-md-6">
                			<button type="submit" class="btn btn-success btn-lg">Add product</button>
@@ -198,7 +198,7 @@
 
 
                </div>
-    
+
                 <!-- hotel search -->
                 <div class="dashboard-tab-content">
                     <center>
@@ -214,22 +214,27 @@
                       <h3 style="margin-top: 0;color:#55518a">Restaurant Diirectory</h3>
                     </center>
                 </div>
-        
+
             </div>
-         
+
         <!-- END OF MAIN PART -->
 
-	
+
 
         </div>
   </div>
 
+  <script>
 
-<!-- tabs js library -->
-<script src="../scripts/3rdparty/tabs.js"></script>
+    $(document).ready(function() {
+      $("div.dashboard-tab-menu>div.list-group>a").click(function(e) {
+          e.preventDefault();
+          $(this).siblings('a.active').removeClass("active");
+          $(this).addClass("active");
+          var index = $(this).index();
+          $("div.dashboard-tab>div.dashboard-tab-content").removeClass("active");
+          $("div.dashboard-tab>div.dashboard-tab-content").eq(index).addClass("active");
+      });
+  });
 
-<!-- slider js library -->
-<script src="../scripts/3rdparty/slider.js">
-</script>
-
-
+  </script>

@@ -6,7 +6,7 @@ app.controller('navCtrl', function($scope, $location, $auth){
       {name: "About", href: "#/about"},
       {name: "Dashboard", href: "#/dashboard"},
       {name: "Menu", href:"#/menu"},
-      {name: "Meals", href: "#/meals"},
+      {name: "Meals", href: "#/meal"},
       {name: "Ingredients", href: "#/ingredients"}
     ];
   };

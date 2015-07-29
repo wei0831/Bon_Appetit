@@ -22,7 +22,9 @@
     "angular-animate": "~1.4.3",
     "ui-router": "~0.2.15",
     "angular-motion": "~0.4.2",
-    "bootswatch-dist": "lumen"
+    "bootswatch-dist": "lumen",
+    "angular-file-upload": "~1.2.0",
+    "jqueryui": "~1.11.4"
   },
   "overrides": {
     "bootstrap": {
@@ -72,6 +74,11 @@
       "main": [
         "dist/angular-strap.min.js",
         "dist/angular-strap.tpl.min.js"
+      ]
+    },
+    "jqueryui":{
+      "main": [
+        "jquery-ui.min.js"
       ]
     }
   }

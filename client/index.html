@@ -11,8 +11,8 @@
     <!-- endbower -->
 
     <!-- injector:css -->
-    <link rel="stylesheet" href="/stylesheets/main.css">
     <link rel="stylesheet" href="/stylesheets/icon.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
     <!-- endinjector -->
   </head>
 
@@ -24,7 +24,7 @@
         </div>
         <div>
           <ul class="nav navbar-nav">
-            <li ng-repeat="nav in navList" ng-class="{active: isActive(nav)}">
+            <li ng-repeat="nav in navList" ng-class="{navActive: isActive(nav)}">
               <a href="{{nav.href}}" ng-click="select(nav)"><span class="{{nav.class}}"></span> <span ng-bind="nav.name"></span></a>
             </li>
           </ul>
@@ -56,19 +56,15 @@
     <script src="vendor/angular-animate/angular-animate.min.js"></script>
     <script src="vendor/ui-router/release/angular-ui-router.js"></script>
     <script src="vendor/bootswatch-dist/js/bootstrap.js"></script>
+    <script src="vendor/angular-file-upload/dist/angular-file-upload.min.js"></script>
+    <script src="vendor/jqueryui/jquery-ui.min.js"></script>
     <!-- endbower -->
 
-    <!-- extra -->
-
-
-  <!-- Fix for old browsers -->
- <script src="../scripts/3rdparty/console-sham.js"></script>
-
-
-    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
-
     <!-- injector:js -->
+
     <script src="/scripts/_main/app.js"></script>
+    <script src="/scripts/controllers/fileupload/controllers.js"></script>
+    <script src="/scripts/controllers/fileupload/directives.js"></script>
     <script src="/scripts/controllers/loginCtrl.js"></script>
     <script src="/scripts/controllers/logoutCtrl.js"></script>
     <script src="/scripts/controllers/navCtrl.js"></script>
@@ -76,13 +72,6 @@
     <script src="/scripts/controllers/userCtrl.js"></script>
     <script src="/scripts/services/mainFactory.js"></script>
     <!-- endinjector -->
-
-     <!-- image upload -->
-  <script src="../scripts/3rdparty/angular-file-upload.min.js"></script>
-  <script src="../scripts/controllers/fileupload/controllers.js"></script>
-
-<!--thumbnails for images-->
-<script src="../scripts/controllers/fileupload/directives.js"></script>
 
   </body>
 </html>

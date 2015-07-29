@@ -35,6 +35,14 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider){
      }
     }
   })
+  .state('menu', {
+    url: '/menu',
+    templateUrl: 'partials/menu.html'
+  })
+  .state('meal', {
+    url: '/meal',
+    templateUrl: 'partials/meal.html'
+  })
   .state('about', {
     url: '/about',
     templateUrl: 'partials/about.html'
