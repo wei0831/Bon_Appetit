@@ -1,3 +1,6 @@
+// Author: Malik Nur
+// Date: 07/27/2015
+// Recipe Model
 
 var mongoose = require('mongoose'),
 Schema = mongoose.Schema;
