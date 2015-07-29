@@ -4,28 +4,20 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider){
   $stateProvider
   .state('home',{
     url: '/',
-    templateUrl: 'partials/about.html',
-    resolve: {
-     authenticated: function($q, $location, $auth) {
-       var deferred = $q.defer();
-
-       if (!$auth.isAuthenticated()) {
-         $location.path('/login');
-       } else {
-         deferred.resolve();
-       }
-       return deferred.promise;
-     }
+    views: {
+        "nav_top": { templateUrl: "partials/nav_default.html" },
+        "main": { templateUrl: "partials/about.html" }
     }
   })
   .state('user', {
     url: '/user',
-    templateUrl: 'partials/profile.html',
-    controller: 'userCtrl',
+    views: {
+        "nav_top": { templateUrl: "partials/nav_default.html" },
+        "main": { templateUrl: "partials/profile.html", controller: 'userCtrl' }
+    },
     resolve: {
-     authenticated: function($q, $location, $auth) {
+     authenticated : function($q, $location, $auth) {
        var deferred = $q.defer();
-
        if (!$auth.isAuthenticated()) {
          $location.path('/login');
        } else {
@@ -37,37 +29,78 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider){
   })
   .state('menu', {
     url: '/menu',
-    templateUrl: 'partials/menu.html'
+    views: {
+        "nav_top": { templateUrl: "partials/nav_default.html" },
+        "main": { templateUrl: "partials/menu.html"}
+    }
   })
   .state('meal', {
     url: '/meal',
-    templateUrl: 'partials/meal.html'
+    views: {
+        "nav_top": { templateUrl: "partials/nav_default.html" },
+        "main": { templateUrl: "partials/meal.html"}
+    }
   })
   .state('about', {
     url: '/about',
-    templateUrl: 'partials/about.html'
+    views: {
+        "nav_top": { templateUrl: "partials/nav_default.html" },
+        "main": { templateUrl: "partials/about.html"}
+    }
+  })
+  .state('ingredients', {
+    url: '/ingredients',
+    redirectTo: 'ingredients.view',
+    views: {
+        "nav_top": { templateUrl: "partials/nav_default.html" },
+        "main": { templateUrl: "partials/ingredients/index.html", controller: 'ingredientsCtrl'}
+    }
+  })
+  .state('ingredients.view', {
+    views: {
+        "nav_side": { templateUrl: "partials/ingredients/index.nav_leftside.html"},
+        "content": { templateUrl: "partials/ingredients/index.view.html"}
+    }
+  })
+  .state('ingredients.add', {
+    views: {
+      "nav_side": { templateUrl: "partials/ingredients/index.nav_leftside.html"},
+      "content": { templateUrl: "partials/ingredients/index.add.html"}
+    }
+  })
+  .state('ingredients.edit', {
+    views: {
+      "nav_side": { templateUrl: "partials/ingredients/index.nav_leftside.html"},
+      "content": { templateUrl: "partials/ingredients/index.edit.html"}
+    }
+  })
+  .state('ingredients.remove', {
+    views: {
+      "nav_side": { templateUrl: "partials/ingredients/index.nav_leftside.html"},
+      "content": { templateUrl: "partials/ingredients/index.remove.html"}
+    }
   })
   .state('signup', {
     url: '/signup',
-    templateUrl: 'partials/signup.html',
-    controller: 'signupCtrl'
+    views: {
+        "nav_top": { templateUrl: "partials/nav_default.html" },
+        "main": { templateUrl: "partials/signup.html", controller: 'signupCtrl'}
+    }
   })
   .state('login', {
     url: '/login',
-    templateUrl: 'partials/login.html',
-    controller: 'loginCtrl'
+    views: {
+        "nav_top": { templateUrl: "partials/nav_default.html" },
+        "main": { templateUrl: "partials/login.html", controller: 'loginCtrl' }
+    }
   })
-
   .state('dashboard', {
     url:'/dashboard',
-    templateUrl: 'partials/dashboard.html'
+    views: {
+        "nav_top": { templateUrl: "partials/nav_default.html" },
+        "main": { templateUrl: "partials/dashboard.html"}
+    }
   })
-
-  .state('ingredients', {
-    url:'/ingredients',
-    templateUrl: 'partials/ingredients.html'
-  })
-
   .state('logout', {
     url: '/logout',
     template: null,
