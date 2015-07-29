@@ -1,6 +1,7 @@
 var users = require("../controllers/c_user.js");
 var recipes = require("../controllers/c_recipe.js");
 var meals = require("../controllers/c_meal.js");
+var menus = require("../controllers/c_menu.js");
 var api = require("../controllers/c_api.js");
 
 module.exports = function(app) {
@@ -66,5 +67,27 @@ module.exports = function(app) {
   app.put('/meal/:id', function(req, res){
     meals.update(req, res);
   });
-  
+
+  //////////////////////////////////////////////////////
+  // Menu
+  //////////////////////////////////////////////////////
+  app.post('/menu', function(req, res){
+    menus.add(req, res);
+  });
+
+  app.get('/menu', function(req, res){
+    menus.show(req, res);
+  });
+
+  app.get('/menu/:id', function(req, res){
+    menus.getById(req, res);
+  });
+
+  app.delete('/menu/:id', function(req, res){
+    menus.destory(req, res);
+  });
+
+  app.put('/menu/:id', function(req, res){
+    menus.update(req, res);
+  });
 };

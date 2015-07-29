@@ -20,5 +20,6 @@ var MealSchema = Schema({
 
 MealSchema.path('name').required(true, 'name is required');
 MealSchema.path('price').required(true, 'price is required');
+MealSchema.path('category').required(true, 'category is required');
 
 mongoose.model('Meal', MealSchema)

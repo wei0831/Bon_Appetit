@@ -31,23 +31,28 @@ module.exports = (function(){
 				_recipes: req.body.recipeIDs,
 				ingredients: req.body.ingredients,
 				price: req.body.price,
-				picture: req.body.picture
+				picture: req.body.picture,
+				category: req.body.category
 			});
-
-			for(var i = 0; i < req.body.recipeIDs.length; ++i){
-				Recipe.findOne({_id : req.body.recipeIDs[i]}, function(err, result){
-					result._meals.addToSet(newMeal._id);
-					result.save(function(err){
-						if(err) return res.status(400).send(err);
-					});
-				});
-			}
 
 			newMeal.save(function(err){
-				if(err) return res.status(400).send(err);
+				if(err) return res.status(400).json(err);
+
+				// Add reference of this meal to each recipes
+				for(var i = 0; i < req.body.recipeIDs.length; ++i){
+					Recipe.findOne({_id : req.body.recipeIDs[i]}, function(err, result){
+						if(err) return;
+						if(!result) return;
+						result._meals.addToSet(newMeal._id);
+						result.save(function(err){
+							if(err) return res.status(400).send(err);
+						});
+					});
+				}
+
+				res.sendStatus(201);
 			});
 
-			res.sendStatus(201);
 		},
 		destory : function(req, res){
 			Meal.findOne({_id: req.params.id}, function(err, meal){
@@ -67,31 +72,54 @@ module.exports = (function(){
 				}
 
 				meal.remove();
-				return res.sendStatus(200);
+				res.sendStatus(200);
 			});
 		},
 		update : function(req, res){
-			var query = {_id: req.params.id};
-			var update = {
-				$set: {
-					name: req.body.name,
-					_recipes: req.body.recipeIDs,
-					ingredients: req.body.ingredients,
-					price: req.body.price,
-					picture: req.body.picture,
-					available: req.body.available,
-					updated_at: Date.now()
-				}
-			};
-			var option = {upsert: false};
+			Meal.findOne({_id: req.params.id}, function(err, meal){
+				if(err) return res.status(400).send(err);
+				if(!meal) return res.sendStatus(400);
 
-			Meal.findOneAndUpdate(query, update, option,
-				function(err, result){
-					if(err) return res.status(400).send(err);
-					if(!result) return res.sendStatus(400);
-					res.sendStatus(200);
+				// Remove each Recipe's reference to this meal
+				for(var i = 0; i < meal._recipes.length; ++i){
+					Recipe.findOne({_id : meal._recipes[i]}, function(err, recipe){
+						if(err) return;
+						if(!recipe) return;
+						recipe._meals.pull(meal._id);
+						recipe.save(function(err){
+							if(err) console.log("Error: Update Meal - Remove Reference");
+						});
+					});
 				}
-			);
+
+				// Update Meal
+				meal.name = req.body.name;
+				meal._recipes = req.body.recipeIDs;
+				meal.ingredients = req.body.ingredients;
+				meal.price = req.body.price;
+				meal.picture = req.body.picture;
+				meal.category = req.body.category;
+				meal.available = req.body.available;
+				meal.updated_at = Date.now();
+
+				meal.save(function(err){
+					if(err) return res.status(400).send(err);
+
+					// Add each Recipe's reference to this meal
+					for(var i = 0; i < meal._recipes.length; ++i){
+						Recipe.findOne({_id : meal._recipes[i]}, function(err, recipe){
+							if(err) return;
+							if(!recipe) return;
+							recipe._meals.addToSet(meal._id);
+							recipe.save(function(err){
+								if(err) console.log("Error: Update Meal - Add Reference");
+							});
+						});
+					}
+
+					res.sendStatus(200);
+				});
+			});
 		}
 
 	}
