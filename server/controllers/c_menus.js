@@ -1,72 +1,116 @@
-// MENU CONTROLLER
+// Author: Jack Chang
+// Date: 07/28/2015
+// Meal Controller
 
-var mongoose = require('mongoose')
-
-var Menu = mongoose.model('Menu')
+var mongoose = require('mongoose'),
+		Meal = mongoose.model('Meal'),
+		Menu = mongoose.model('Menu');
 
 module.exports = (function(){
 
-
 	return {
-
-		showAll: function(req, res){
-			Menu.find({}, function(err, results){
-				if(err) {res.json(err)}
-					else{
-						res.json(results)
-					}
-			})
+		show : function(req, res){
+			Menu.find({})
+			.populate('_meals')
+			.exec(function(err, result){
+				if(err) return res.status(400).send(err);
+				res.status(200).json(result);
+			});
 		},
-
-		getById: function(req, res){
-			Menu.find({_id: req.params.id}, function(err, result){
-				if(err) {res.json(err)}
-					else {
-						res.json(result)
-					}
-			})
+		getById : function(req, res){
+			Menu.find({_id: req.params.id})
+			.populate('_meals')
+			.exec(function(err, result){
+				if(err) return res.status(400).send(err);
+				res.status(200).json(result);
+			});
 		},
-
-		add: function(req, res){
-
-			var newMenu = Menu({
-
+		add : function(req, res){
+			var newMenu = new Menu({
 				name: req.body.name,
-				meals: req.body.meals
+				_meals: req.body.mealIDs
+			});
 
-			})
+			newMenu.save(function(err){
+				if(err) return res.status(400).send(err);
+
+				// Add reference of this menu to each meal
+				for(var i = 0; i < req.body.mealIDs.length; ++i){
+					Meal.findOne({_id : req.body.mealIDs[i]}, function(err, result){
+						if(err) return;
+						if(!result) return;
+						result._menus.addToSet(newMenu._id);
+						result.save(function(err){
+							if(err) return res.status(400).send(err);
+						});
+					});
+				};
+				res.sendStatus(201);
+			});
 		},
+		destory : function(req, res){
+			Menu.findOne({_id: req.params.id}, function(err, menu){
+				if(err) return res.status(400).send(err);
+				if(!menu) return res.sendStatus(400);
 
-		destory: function(req, res){
+				// Remove each Recipe's reference to this menu
+				for(var i = 0; i < menu._meals.length; ++i){
+					Meal.findOne({_id : menu._meals[i]}, function(err, meal){
+						if(err) return;
+						if(!meal) return;
+						meal._menus.pull(menu._id);
+						meal.save(function(err){
+							if(err) return res.status(400).send(err);
+						});
+					});
+				}
 
-			Menu.remove({_id: req.params.id}, function(err){
-				if(err) { res.json(err)}
-					else {
-						res.json(true)
-					}
-			})
+				menu.remove();
+				res.sendStatus(200);
+			});
 		},
+		update : function(req, res){
+			Menu.findOne({_id: req.params.id}, function(err, menu){
+				if(err) return res.status(400).send(err);
+				if(!meal) return res.sendStatus(400);
 
+				// Remove each Recipe's reference to this menu
+				for(var i = 0; i < menu._meals.length; ++i){
+					Meal.findOne({_id : menu._meals[i]}, function(err, meal){
+						if(err) return;
+						if(!recipe) return;
+						meal._menus.pull(menu._id);
+						meal.save(function(err){
+							if(err) console.log("Error: Update Meal - Remove Reference");
+						});
+					});
+				}
 
-		update: function(req, res){
+				// Update Menu
+				menu.name = req.body.name;
+				menu._meals = req.body.mealIDs;
+				menu.updated_at = Date.now();
 
-			var query = {_id: req.params.id}
-			var update = { $set: {
-				name: req.body.name,
-				meals: req.body.meals,
-				updated_at: Date.now
+				menu.save(function(err){
+					if(err) return res.status(400).send(err);
 
-			}}
-			var options = {upsert: true}
-
-			Menu.findOneAndUpdate(query, update, option, function(err, result){
-				if(err) {res.json(err)}
-					else {
-						res.json(result)
+					// Add each Recipe's reference to this meal
+					for(var i = 0; i < menu._meals.length; ++i){
+						Meal.findOne({_id : menu._meals[i]}, function(err, meal){
+							if(err) return;
+							if(!recipe) return;
+							meal._menus.addToSet(menu._id);
+							meal.save(function(err){
+								if(err) console.log("Error: Update Meal - Add Reference");
+							});
+						});
 					}
-			})
+
+					res.sendStatus(200);
+				});
+			});
 		}
 
 	}
 
-})()
+})();

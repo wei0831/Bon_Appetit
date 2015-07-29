@@ -1,10 +1,9 @@
-var users = require("../controllers/c_user.js");
-var recipes = require("../controllers/c_recipe.js");
-var meals = require("../controllers/c_meal.js");
-var menus = require("../controllers/c_menu.js");
+var users = require("../controllers/c_users.js");
+var recipes = require("../controllers/c_recipes.js");
+var meals = require("../controllers/c_meals.js");
+var menus = require("../controllers/c_menus.js");
 var api = require("../controllers/c_api.js");
 var igredients = require("../controllers/c_ingredients.js");
-var menus = require("../controllers/c_menus.js");
 
 module.exports = function(app) {
 
