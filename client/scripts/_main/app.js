@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui.router', 'mgcrea.ngStrap', 'ngAnimate', 'satellizer', 'angular-jwt']);
+var app = angular.module('app', ['ui.router', 'mgcrea.ngStrap', 'ngAnimate', 'satellizer', 'angular-jwt', 'angularFileUpload']);
 
 app.config(function($stateProvider, $urlRouterProvider, $authProvider){
   $stateProvider
@@ -49,6 +49,17 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider){
     templateUrl: 'partials/login.html',
     controller: 'loginCtrl'
   })
+
+  .state('dashboard', {
+    url:'/dashboard',
+    templateUrl: 'partials/dashboard.html'
+  })
+
+  .state('ingredients', {
+    url:'/ingredients',
+    templateUrl: 'partials/ingredients.html'
+  })
+
   .state('logout', {
     url: '/logout',
     template: null,

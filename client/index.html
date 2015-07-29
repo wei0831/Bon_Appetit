@@ -12,6 +12,7 @@
 
     <!-- injector:css -->
     <link rel="stylesheet" href="/stylesheets/main.css">
+    <link rel="stylesheet" href="/stylesheets/icon.css">
     <!-- endinjector -->
   </head>
 
@@ -22,8 +23,8 @@
           <a class="navbar-brand" ng-click="select(this)" href="#/">Admin</a>
         </div>
         <div>
-          <ul class="nav navbar-nav">
-            <li ng-repeat="nav in navList" ng-class="{active: isActive(nav)}">
+          <ul class="nav navbar-nav" ng-if="isAuthenticated()">
+            <li  ng-repeat="nav in navList" ng-class="{active: isActive(nav)}">
               <a href="{{nav.href}}" ng-click="select(nav)" ng-bind="nav.name"></a>
             </li>
           </ul>
@@ -57,6 +58,15 @@
     <script src="vendor/bootswatch-dist/js/bootstrap.js"></script>
     <!-- endbower -->
 
+    <!-- extra -->
+
+
+  <!-- Fix for old browsers -->
+ <script src="../scripts/3rdparty/console-sham.js"></script>
+
+
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+
     <!-- injector:js -->
     <script src="/scripts/_main/app.js"></script>
     <script src="/scripts/controllers/loginCtrl.js"></script>
@@ -66,6 +76,13 @@
     <script src="/scripts/controllers/userCtrl.js"></script>
     <script src="/scripts/services/mainFactory.js"></script>
     <!-- endinjector -->
+
+     <!-- image upload -->
+  <script src="../scripts/3rdparty/angular-file-upload.min.js"></script>
+  <script src="../scripts/controllers/fileupload/controllers.js"></script>
+
+<!--thumbnails for images-->
+<script src="../scripts/controllers/fileupload/directives.js"></script>
 
   </body>
 </html>

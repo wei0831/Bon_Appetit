@@ -6,11 +6,11 @@ Schema = mongoose.Schema;
 var RecipeSchema = Schema({
 
 	name: String,
-	ingredients: [
+	ingredients: [{
 					_baseIngredient: {type: Schema.ObjectId, ref: 'BaseIngredient'},
 					name: String,
 					quantity: Number
-					],
+					}],
 	_mealID:[{type: Schema.ObjectId, ref:'Meal'}],
 	created_at: {type: Date, default: Date.now},
 	updated_at: {type: Date, default: Date.now}

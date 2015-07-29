@@ -25,10 +25,10 @@ app.controller('loginCtrl', function($scope, $auth, $alert) {
   $scope.userlogin = function() {
     $auth.login($scope.login)
     .then(function(response) {
-      console.log(jwtHelper.decodeToken(response.data.token));
+     
     })
     .catch(function(response) {
-      console.log(response.data);
+      
       $alert({
         content: response.data.message,
         animation: 'fadeZoomFadeDown',
