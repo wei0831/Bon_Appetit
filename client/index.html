@@ -23,9 +23,9 @@
           <a class="navbar-brand" ng-click="select(this)" href="#/">Admin</a>
         </div>
         <div>
-          <ul class="nav navbar-nav" ng-if="isAuthenticated()">
-            <li  ng-repeat="nav in navList" ng-class="{active: isActive(nav)}">
-              <a href="{{nav.href}}" ng-click="select(nav)" ng-bind="nav.name"></a>
+          <ul class="nav navbar-nav">
+            <li ng-repeat="nav in navList" ng-class="{active: isActive(nav)}">
+              <a href="{{nav.href}}" ng-click="select(nav)"><span class="{{nav.class}}"></span> <span ng-bind="nav.name"></span></a>
             </li>
           </ul>
           <ul ng-if="!isAuthenticated()" class="nav navbar-nav navbar-right">
