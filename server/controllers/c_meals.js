@@ -54,7 +54,7 @@ module.exports = (function(){
 			});
 
 		},
-		destory : function(req, res){
+		destroy : function(req, res){
 			Meal.findOne({_id: req.params.id}, function(err, meal){
 				if(err) return res.status(400).send(err);
 				if(!meal) return res.sendStatus(400);

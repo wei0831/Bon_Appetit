@@ -36,7 +36,7 @@ module.exports = (function(){
 				res.sendStatus(201);
 			});
 		},
-		destory : function(req, res){
+		destroy : function(req, res){
 			Recipe.remove({_id: req.params.id}, function(err, result){
 				if(err) return res.status(400).send(err);
 				res.sendStatus(200);

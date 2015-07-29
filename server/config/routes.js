@@ -40,7 +40,7 @@ module.exports = function(app) {
   });
 
   app.delete('/recipe/:id', function(req, res){
-    recipes.destory(req, res);
+    recipes.destroy(req, res);
   });
 
   app.put('/recipe/:id', function(req, res){
@@ -63,7 +63,7 @@ module.exports = function(app) {
   });
 
   app.delete('/meal/:id', function(req, res){
-    meals.destory(req, res);
+    meals.destroy(req, res);
   });
 
   app.put('/meal/:id', function(req, res){
@@ -86,7 +86,7 @@ module.exports = function(app) {
   });
 
   app.delete('/menu/:id', function(req, res){
-    menus.destory(req, res);
+    menus.destroy(req, res);
   });
 
   app.put('/menu/:id', function(req, res){
