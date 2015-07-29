@@ -1,3 +1,7 @@
+// Author: Malik Nur
+// Date: 07/27/2015
+// Igredient Controller
+
 // INGREDIENT CONTROLLER
 var mongoose = require('mongoose'),
 		BaseIngredient = mongoose.model('BaseIngredient');

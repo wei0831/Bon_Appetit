@@ -1,3 +1,7 @@
+// Author: Malik Nur
+// Date: 07/27/2015
+// Ingredient Model
+
 var mongoose = require('mongoose'),
 		Schema = mongoose.Schema;
 

@@ -23,6 +23,48 @@ module.exports = function(app) {
     api.test(req, res);
   });
 
+  //////////////////////////////////////
+  // API RECIPE
+  /////////////////////////////////////
+
+
+  app.get('/api/v1/recipes/', function(req, res) {
+
+    api.recipeShowAll(req, res);
+
+  });
+
+  app.get('/api/v1/recipes/q', function(req, res) {
+    api.recipeFindByName(req, res);
+  });
+
+  app.get('/api/v1/recipes/:id', function(req, res) {
+    api.recipeShowOne(req, res);
+  });
+
+
+  //////////////////////////////////////
+  // API MEAL
+  /////////////////////////////////////
+
+  app.get('/api/v1/meals/', function(req, res) {
+  
+  api.mealShowAll(req, res);
+
+  });
+
+  app.get('/api/v1/meals/q', function(req, res) {
+    api.mealFindByName(req, res);
+  });
+
+  app.get('/api/v1/meals/p', function(req, res){
+    api.mealsPriceRange(req, res);
+  })
+
+  app.get('/api/v1/meals/:id', function(req, res) {
+    api.mealShowOne(req, res);
+  });
+
 
   //////////////////////////////////////////////////////
   // Recipe
