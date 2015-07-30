@@ -2,13 +2,6 @@ var app = angular.module('app', ['ui.router', 'mgcrea.ngStrap', 'ngAnimate', 'sa
 
 app.config(function($stateProvider, $urlRouterProvider, $authProvider){
   $stateProvider
-  .state('home',{
-    url: '/',
-    views: {
-        "nav_top": { templateUrl: "partials/nav_default.html" },
-        "main": { templateUrl: "partials/about.html" }
-    }
-  })
   .state('user', {
     url: '/user',
     views: {
@@ -27,20 +20,6 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider){
      }
     }
   })
-  .state('menu', {
-    url: '/menu',
-    views: {
-        "nav_top": { templateUrl: "partials/nav_default.html" },
-        "main": { templateUrl: "partials/menu.html"}
-    }
-  })
-  .state('meal', {
-    url: '/meal',
-    views: {
-        "nav_top": { templateUrl: "partials/nav_default.html" },
-        "main": { templateUrl: "partials/meal.html"}
-    }
-  })
   .state('about', {
     url: '/about',
     views: {
@@ -50,7 +29,6 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider){
   })
   .state('ingredients', {
     url: '/ingredients',
-    redirectTo: 'ingredients.view',
     views: {
         "nav_top": { templateUrl: "partials/nav_default.html" },
         "main": { templateUrl: "partials/ingredients/index.html", controller: 'ingredientsCtrl'}
@@ -80,6 +58,102 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider){
       "content": { templateUrl: "partials/ingredients/index.remove.html"}
     }
   })
+  .state('meals', {
+    url: '/meals',
+    redirectTo: 'meals.view',
+    views: {
+        "nav_top": { templateUrl: "partials/nav_default.html" },
+        "main": { templateUrl: "partials/meals/index.html", controller: 'mealsCtrl'}
+    }
+  })
+  .state('meals.view', {
+    views: {
+        "nav_side": { templateUrl: "partials/meals/index.nav_leftside.html"},
+        "content": { templateUrl: "partials/meals/index.view.html"}
+    }
+  })
+  .state('meals.add', {
+    views: {
+      "nav_side": { templateUrl: "partials/meals/index.nav_leftside.html"},
+      "content": { templateUrl: "partials/meals/index.add.html"}
+    }
+  })
+  .state('meals.edit', {
+    views: {
+      "nav_side": { templateUrl: "partials/meals/index.nav_leftside.html"},
+      "content": { templateUrl: "partials/meals/index.edit.html"}
+    }
+  })
+  .state('meals.remove', {
+    views: {
+      "nav_side": { templateUrl: "partials/meals/index.nav_leftside.html"},
+      "content": { templateUrl: "partials/meals/index.remove.html"}
+    }
+  })
+  .state('menus', {
+    url: '/menus',
+    redirectTo: 'menus.view',
+    views: {
+        "nav_top": { templateUrl: "partials/nav_default.html" },
+        "main": { templateUrl: "partials/menus/index.html", controller: 'menusCtrl'}
+    }
+  })
+  .state('menus.view', {
+    views: {
+        "nav_side": { templateUrl: "partials/menus/index.nav_leftside.html"},
+        "content": { templateUrl: "partials/menus/index.view.html"}
+    }
+  })
+  .state('menus.add', {
+    views: {
+      "nav_side": { templateUrl: "partials/menus/index.nav_leftside.html"},
+      "content": { templateUrl: "partials/menus/index.add.html"}
+    }
+  })
+  .state('menus.edit', {
+    views: {
+      "nav_side": { templateUrl: "partials/menus/index.nav_leftside.html"},
+      "content": { templateUrl: "partials/menus/index.edit.html"}
+    }
+  })
+  .state('menus.remove', {
+    views: {
+      "nav_side": { templateUrl: "partials/menus/index.nav_leftside.html"},
+      "content": { templateUrl: "partials/menus/index.remove.html"}
+    }
+  })
+  .state('dashboard', {
+    url: '/',
+    redirectTo: 'dashboard.menu',
+    views: {
+        "nav_top": { templateUrl: "partials/nav_default.html" },
+        "main": { templateUrl: "partials/dashboard/index.html", controller: 'dashboardCtrl'}
+    }
+  })
+  .state('dashboard.menu', {
+    views: {
+        "nav_side": { templateUrl: "partials/dashboard/index.nav_leftside.html"},
+        "content": { templateUrl: "partials/dashboard/index.menu.html"}
+    }
+  })
+  .state('dashboard.meal', {
+    views: {
+      "nav_side": { templateUrl: "partials/dashboard/index.nav_leftside.html"},
+      "content": { templateUrl: "partials/dashboard/index.meal.html"}
+    }
+  })
+  .state('dashboard.recipe', {
+    views: {
+      "nav_side": { templateUrl: "partials/dashboard/index.nav_leftside.html"},
+      "content": { templateUrl: "partials/dashboard/index.recipe.html"}
+    }
+  })
+  .state('dashboard.ingredient', {
+    views: {
+      "nav_side": { templateUrl: "partials/dashboard/index.nav_leftside.html"},
+      "content": { templateUrl: "partials/dashboard/index.ingredient.html"}
+    }
+  })
   .state('signup', {
     url: '/signup',
     views: {
@@ -92,13 +166,6 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider){
     views: {
         "nav_top": { templateUrl: "partials/nav_default.html" },
         "main": { templateUrl: "partials/login.html", controller: 'loginCtrl' }
-    }
-  })
-  .state('dashboard', {
-    url:'/dashboard',
-    views: {
-        "nav_top": { templateUrl: "partials/nav_default.html" },
-        "main": { templateUrl: "partials/dashboard.html"}
     }
   })
   .state('logout', {

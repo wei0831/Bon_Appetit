@@ -53,5 +53,5 @@ var app = angular.module('app');
             console.info('onCompleteAll');
         };
 
-        console.info('uploader', uploader);
+        // console.info('uploader', uploader);
     }]);

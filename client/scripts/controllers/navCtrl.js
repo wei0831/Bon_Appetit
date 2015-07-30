@@ -3,11 +3,10 @@ var app = angular.module('app');
 app.controller('navCtrl', function($scope, $location, $auth){
   $scope.init = function(){
     $scope.navList = [
-      {name: "About", href: "#/about"},
-      {name: "Dashboard", href: "#/dashboard"},
-      {name: "Menu", href:"#/menu"},
-      {name: "Meals", href: "#/meal"},
-      {name: "Ingredients", href: "#/ingredients"}
+      {name: "Menus", href:"#/menus"},
+      {name: "Meals", href: "#/meals"},
+      {name: "Ingredients", href: "#/ingredients"},
+      {name: "About", href: "#/about"}
     ];
   };
   $scope.isActive = function(item) {

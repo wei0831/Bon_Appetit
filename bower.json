@@ -24,7 +24,7 @@
     "angular-motion": "~0.4.2",
     "bootswatch-dist": "lumen",
     "angular-file-upload": "~1.2.0",
-    "jqueryui": "~1.11.4"
+    "restangular": "~1.5.1"
   },
   "overrides": {
     "bootstrap": {
@@ -76,9 +76,9 @@
         "dist/angular-strap.tpl.min.js"
       ]
     },
-    "jqueryui":{
+    "restangular": {
       "main": [
-        "jquery-ui.min.js"
+        "dist/restangular.min.js"
       ]
     }
   }
