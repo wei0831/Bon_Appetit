@@ -10,6 +10,12 @@ app.controller('ingredientsCtrl', function($state, $scope, $location, $auth, mai
     ];
     $scope.state = $scope.sidenavList[0];
     $state.transitionTo($scope.state["data_state"]);
+
+
+    $scope.models = {
+        selected: null,
+        lists: []
+    };
   };
 
   $scope.isActive = function(item) {
@@ -19,10 +25,21 @@ app.controller('ingredientsCtrl', function($state, $scope, $location, $auth, mai
   $scope.changeState = function(item){
     $scope.state = item;
     $state.transitionTo($scope.state["data_state"]);
-  }
+  };
 
   mainFactory.getIngredients(function(result){
     $scope.ingredients = result;
-  })
+
+    for(var i = 0; i < $scope.ingredients.length; ++i)
+      $scope.models.lists.push({
+        "name" : $scope.ingredients[i].name,
+        "Calorie" : $scope.ingredients[i].calorie,
+        "Picture" : "<img height='128' width='128' src='"+$scope.ingredients[i].picture+"'>"
+      });
+  });
+
+  $scope.$watch('models', function(model) {
+      $scope.modelAsJson = angular.toJson(model, true);
+  }, true);
 
 });

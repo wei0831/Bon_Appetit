@@ -1,3 +1,55 @@
-<ul ng-repeat="item in ingredients | orderBy: 'name'">
-  <li ng-bind="item.name"></li>
-</ul>
+<div style="margin-top:20px;"></div>
+
+<div class="row">
+    <div class="col-md-10">
+      <div dnd-list="models.lists" class="row">
+          <div ng-repeat="item in models.lists"
+              dnd-draggable="item"
+              dnd-moved="models.lists.splice($index, 1)"
+              dnd-effect-allowed="move"
+              dnd-selected="models.selected = item"
+              ng-class="{'selected': models.selected === item}"
+              class="col-md-3 col-sm-3"
+              >
+              <div class="panel panel-info">
+                  <div class="panel-heading">
+                      <h3 class="panel-title">Test {{item.name}}</h3>
+                  </div>
+                  <div class="panel-body">
+                    <div ng-repeat="(key, val) in item">
+                      <h4>{{key}}</h4>
+                      <div ng-bind-html="val"></div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="col-md-2">
+      <div class="panel panel-info">
+          <div class="panel-heading">
+              <h3 class="panel-title">Trashcan</h3>
+          </div>
+          <div class="panel-body">
+            <center>
+              <ul dnd-list="[]">
+                  <li><i class="icon icon-bin fs1"></i></li>
+              </ul>
+            </center>
+          </div>
+      </div>
+    </div>
+
+</div>
+
+<div class="row">
+  <div class="panel panel-default">
+      <div class="panel-heading">
+          <h3 class="panel-title">Generated Model</h3>
+      </div>
+      <div class="panel-body">
+          <pre class="code">{{modelAsJson}}</pre>
+      </div>
+  </div>
+</div>
