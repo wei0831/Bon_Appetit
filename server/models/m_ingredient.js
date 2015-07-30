@@ -22,7 +22,7 @@ BaseIngredientSchema.path('name').required(true, 'name is required');
 var IngredientSchema = Schema({
 	_baseIngredient: {type: Schema.ObjectId, ref: 'BaseIngredient'},
 	name: String,
-	quantity: Number
+	quantity: String
 });
 
 IngredientSchema.path('name').required(true, 'name is required');

@@ -1,6 +1,6 @@
 var app = angular.module('app');
 
-app.controller('ingredientsCtrl', function($state, $scope, $location, $auth){
+app.controller('ingredientsCtrl', function($state, $scope, $location, $auth, mainFactory){
   $scope.init = function(){
     $scope.sidenavList = [
       {name: "View All", data_state: "ingredients.view", data_icon: "icon icon-eye fs1"},
@@ -20,5 +20,9 @@ app.controller('ingredientsCtrl', function($state, $scope, $location, $auth){
     $scope.state = item;
     $state.transitionTo($scope.state["data_state"]);
   }
+
+  mainFactory.getIngredients(function(result){
+    $scope.ingredients = result;
+  })
 
 });

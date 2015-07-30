@@ -1,4 +1,5 @@
 var users = require("../controllers/c_users.js");
+var ingredients = require("../controllers/c_ingredients.js");
 var recipes = require("../controllers/c_recipes.js");
 var meals = require("../controllers/c_meals.js");
 var menus = require("../controllers/c_menus.js");
@@ -48,7 +49,7 @@ module.exports = function(app) {
   /////////////////////////////////////
 
   app.get('/api/v1/meals/', function(req, res) {
-  
+
   api.mealShowAll(req, res);
 
   });
@@ -65,6 +66,28 @@ module.exports = function(app) {
     api.mealShowOne(req, res);
   });
 
+  //////////////////////////////////////////////////////
+  // Ingredient
+  //////////////////////////////////////////////////////
+  app.post('/ingredients', function(req, res){
+    ingredients.add(req, res);
+  });
+
+  app.get('/ingredients', function(req, res){
+    ingredients.show(req, res);
+  });
+
+  app.get('/ingredients/:id', function(req, res){
+    ingredients.getById(req, res);
+  });
+
+  app.delete('/ingredients/:id', function(req, res){
+    ingredients.destroy(req, res);
+  });
+
+  app.put('/ingredients/:id', function(req, res){
+    ingredients.update(req, res);
+  });
 
   //////////////////////////////////////////////////////
   // Recipe
