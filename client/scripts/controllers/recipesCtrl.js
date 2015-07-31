@@ -62,9 +62,9 @@ app.controller('recipesCtrl', function($state, $scope, $location, $auth, mainFac
   $scope.check = function() {
       if($scope.models.recycle.length > 0)
       {
-        if($scope.models.selected && $scope.models.selected["_id"] == $scope.models.recycle[0]["_id"])
+        if($scope.models.selected && $scope.models.selected._id == $scope.models.recycle[0]._id)
           $scope.models.selected = null;
-        mainFactory.removeRecipe($scope.models.recycle[0]["_id"], function(result){
+        mainFactory.removeRecipe($scope.models.recycle[0]._id, function(result){
           $scope.models.recycle.pop();
         });
       }

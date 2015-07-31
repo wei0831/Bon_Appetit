@@ -15,8 +15,8 @@ app.controller('mealsCtrl', function($state, $scope, $location, $auth, mainFacto
 
     $scope.isCollapsed = true;
 
-    $scope.categories = [{name: "dessert"}, 
-                        {name: "soup"}, 
+    $scope.categories = [{name: "dessert"},
+                        {name: "soup"},
                         {name: "fastfood"},
                         {name: "salad"},
                         {name: "snack"},
@@ -92,7 +92,7 @@ app.controller('mealsCtrl', function($state, $scope, $location, $auth, mainFacto
       {
         if($scope.models.selected && $scope.models.selected["_id"] == $scope.models.recycle[0]["_id"])
           $scope.models.selected = null;
-        mainFactory.removeIngredient($scope.models.recycle[0]["_id"], function(result){
+        mainFactory.removeMeal($scope.models.recycle[0]["_id"], function(result){
           $scope.models.recycle.pop();
         });
       }

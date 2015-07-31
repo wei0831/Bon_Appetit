@@ -55,7 +55,6 @@ module.exports = (function(){
 				if(!recipe) return res.sendStatus(400);
 
 				for(var i = 0; i < recipe.ingredients.length; ++i){
-					console.log(req.body.ingredients[i]._baseIngredient);
 					Ingredient.findOne({_id : recipe.ingredients[i]._baseIngredient}, function(err, ingredient){
 						if(err) return;
 						if(!ingredient) return;

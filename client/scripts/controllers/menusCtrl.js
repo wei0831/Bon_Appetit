@@ -44,7 +44,7 @@ app.controller('menusCtrl', function($state, $scope, $location, $auth, mainFacto
         {
           if($scope.models.selected && $scope.models.selected["_id"] == $scope.models.recycle[0]["_id"])
             $scope.models.selected = null;
-          mainFactory.removeIngredient($scope.models.recycle[0]["_id"], function(result){
+          mainFactory.removeMenu($scope.models.recycle[0]["_id"], function(result){
             $scope.models.recycle.pop();
           });
         }
