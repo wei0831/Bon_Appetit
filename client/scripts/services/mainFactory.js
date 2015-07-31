@@ -79,5 +79,79 @@ app.factory('mainFactory', function($http, Restangular, $window){
     );
   };
 
+  /////////////////////////////
+  // Meals
+  ////////////////////////////
+  var meals = Restangular.all('meals');
+
+  factory.getMeals = function(callback) {
+    meals.getList()
+    .then(function(result) {
+      callback(result);
+    });
+  };
+
+  factory.removeMeal = function(id, callback) {
+    meals.one(id).remove()
+    .then(function(result) {
+      callback(result);
+    });
+  };
+
+  factory.addMeal = function(newItem, callback){
+    console.log(newItem);
+    meals.post(newItem)
+    .then(function(result) {
+      callback(result);
+    });
+  };
+
+  factory.updateMeal = function(updatedItem, callback){
+    Restangular.all('meals/' + updatedItem["_id"])
+    .customPUT(updatedItem)
+    .then(
+      function(result){
+        callback(result);
+      }
+    );
+  };
+
+  /////////////////////////////
+  // Menus
+  ////////////////////////////
+  var menus = Restangular.all('menus');
+
+  factory.getMenus = function(callback) {
+    menus.getList()
+    .then(function(result) {
+      callback(result);
+    });
+  };
+
+  factory.removeMenu = function(id, callback) {
+    menus.one(id).remove()
+    .then(function(result) {
+      callback(result);
+    });
+  };
+
+  factory.addMenu = function(newItem, callback){
+    console.log(newItem);
+    menus.post(newItem)
+    .then(function(result) {
+      callback(result);
+    });
+  };
+
+  factory.updateMenu = function(updatedItem, callback){
+    Restangular.all('menus/' + updatedItem["_id"])
+    .customPUT(updatedItem)
+    .then(
+      function(result){
+        callback(result);
+      }
+    );
+  };
+
   return factory;
 });

@@ -4,6 +4,12 @@ var app = angular.module('app',
 app.config(function($stateProvider, $urlRouterProvider, $authProvider, RestangularProvider){
 
   $stateProvider
+  .state('home',{
+    url: '/',
+    views: {
+        "nav_top": { templateUrl: "partials/nav_default.html" }
+    }
+  })
   .state('user', {
     url: '/user',
     views: {
@@ -157,7 +163,7 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider, Restangul
     }
   })
   .state('dashboard', {
-    url: '/',
+    url: '/dashboard',
     redirectTo: 'dashboard.menu',
     views: {
         "nav_top": { templateUrl: "partials/nav_default.html" },
