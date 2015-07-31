@@ -1,4 +1,133 @@
-<center>
-  <h2>Cooming Soon</h2>
-  <h3>Edit</h3>
-</center>
+<div class="row">
+  <div class="col-sm-5 col-md-5 col-xs-6">
+    <div class="row">
+      <div class="col-sm-12">
+        <h3 class="text-left">Update recipe</h3>
+        <form ng-submit="update()" ng-if="models.selected != null">
+          <div class="form-group text-left">
+            <label class="left">Recipe Name:</label>
+            <input type="text" class="form-control" ng-model="models.selected.name" required>
+          </div>
+          <div class="form-group text-left">
+            <label>Picture: (URL)</label>
+            <input type="text" class="form-control" ng-model="models.selected.picture">
+          </div>
+          <h4 class="text-left">Ingredients</h4>
+          <div dnd-list="models.selected.ingredients" class="well well-lg">
+            <div ng-repeat="item in models.selected.ingredients"
+                dnd-draggable="item"
+                dnd-moved="models.selected.ingredients.splice($index, 1); check();"
+                dnd-effect-allowed="move"
+                class="col-md-12 col-sm-12 panel panel-info">
+              <div class="panel-heading">
+                <h3 class="panel-title">{{item.name}}</h3>
+              </div>
+              <div class="panel-body">
+                <div class="form-group">
+                  <label class="control-label">Quantity</label>
+                  <input class="form-control" type="text" ng-model="item.quantity" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="form-control btn btn-primary">Update recipe</button>
+        </form>
+
+        <div style="margin-top:20px;"></div>
+
+        <h3 class="text-left">Filter recipe</h3>
+
+        <input type="text" placeholder="Search..." ng-model="filterrecipe_name" class="form-control">
+        <div style="margin-top:20px;"></div>
+
+        <div dnd-list="models.recipes">
+          <div ng-repeat="item in models.recipes | filter: filterrecipe_name"
+          dnd-draggable="item" dnd-moved="models.recipes.splice($index, 1); check();"
+          dnd-effect-allowed="move" dnd-selected="models.selected = item"
+          ng-class="{'selected': models.selected === item}"
+          class="col-md-6 col-sm-6 panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">{{item.name}}</h3>
+            </div>
+            <div class="panel-body">
+              <h4>Picture</h4>
+              <div>
+                <img ng-src="{{item.picture}}" style="width:96px; height:96px;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+          <div class="panel panel-default" bs-collapse start-collapsed="true">
+              <div class="panel-heading" role="tab"  bs-collapse-toggle>
+                  <h3 class="panel-title">Recipe Model Debug</h3>
+              </div>
+              <div class="panel-collapse" role="tabpanel"  bs-collapse-target>
+                <div class="panel-body">
+                    <pre class="code">{{modelAsJson}}</pre>
+                </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-2">
+    <div class="panel panel-danger" style="position:fixed">
+        <div class="panel-heading">
+            <h3 class="panel-title">Trashcan</h3>
+        </div>
+        <div class="panel-body">
+          <center dnd-list="[]">
+            <i class="icon icon-bin fs1"></i>
+          </center>
+        </div>
+    </div>
+  </div>
+
+  <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+
+    <div style="margin-top:20px;"></div>
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="text-left">Filter ingredient</h3>
+        <div class="form-group">
+          <input type="text" placeholder="Search..." ng-model="filter_name" class="form-control">
+        </div>
+        <div dnd-list="ingredient_models.lists">
+          <div ng-repeat="item in ingredient_models.lists | filter:filter_name" dnd-draggable="item" dnd-moved="check();" dnd-effect-allowed="copy" dnd-selected="ingredient_models.selected = item" ng-class="{'selected': ingredient_models.selected === item}" class="col-md-6 col-sm-6 panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">{{item.name}}</h3>
+            </div>
+            <div class="panel-body">
+              <h4>Calorie</h4>
+              <div>{{item.calorie}}</div>
+              <h4>Picture</h4>
+              <div>
+                <img ng-src="{{item.picture}}" style="width:96px; height:96px;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+          <div class="panel panel-default" bs-collapse start-collapsed="true">
+              <div class="panel-heading" role="tab"  bs-collapse-toggle>
+                  <h3 class="panel-title">Ingredient Model Debug</h3>
+              </div>
+              <div class="panel-collapse" role="tabpanel"  bs-collapse-target>
+                <div class="panel-body">
+                    <pre class="code">{{ingredient_modelAsJson}}</pre>
+                </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+</div>

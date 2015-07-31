@@ -10,6 +10,7 @@ var RecipeSchema = Schema({
 	name: String,
 	ingredients: ['Ingredient'],
 	_meals:[{type: Schema.Types.ObjectId, ref:'Meal'}],
+	picture: String,
 	created_at: {type: Date, default: Date.now},
 	updated_at: {type: Date, default: Date.now}
 })

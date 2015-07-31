@@ -2,9 +2,10 @@
 // Date: 07/28/2015
 // Recipe Controller
 
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
 
-var Recipe = mongoose.model('Recipe')
+var Recipe = mongoose.model('Recipe');
+var Ingredient = mongoose.model('BaseIngredient');
 
 module.exports = (function(){
 
@@ -28,8 +29,20 @@ module.exports = (function(){
 			var newRecipe = new Recipe({
 				name: req.body.name,
 				ingredients: req.body.ingredients,
-				_recipes: req.body.recipeIDs
+				picture: req.body.picture
 			});
+
+			// Add reference of this recipe to each baseIngredients
+			for(var i = 0; i < req.body.ingredients.length; ++i){
+				Ingredient.findOne({_id : req.body.ingredients[i]._baseIngredient}, function(err, result){
+					if(err) return;
+					if(!result) return;
+					result._recipeID.addToSet(newRecipe._id);
+					result.save(function(err){
+						if(err) console.log("Error: Add Recipe - Add Reference");
+					});
+				});
+			}
 
 			newRecipe.save(function(err){
 				if(err) return res.status(400).send(err);
@@ -37,32 +50,66 @@ module.exports = (function(){
 			});
 		},
 		destroy : function(req, res){
-			Recipe.remove({_id: req.params.id}, function(err, result){
+			Recipe.findOne({_id: req.params.id}, function(err, recipe){
 				if(err) return res.status(400).send(err);
+				if(!recipe) return res.sendStatus(400);
+
+				for(var i = 0; i < recipe.ingredients.length; ++i){
+					console.log(req.body.ingredients[i]._baseIngredient);
+					Ingredient.findOne({_id : recipe.ingredients[i]._baseIngredient}, function(err, ingredient){
+						if(err) return;
+						if(!ingredient) return;
+						ingredient._recipeID.pull(recipe._id);
+						ingredient.save(function(err){
+							if(err) return res.status(400).send(err);
+						});
+					});
+				}
+
+				recipe.remove();
 				res.sendStatus(200);
 			});
 		},
 		update : function(req, res){
-			var query = {_id: req.params.id};
-			var update = {
-				$set: {
-					name: req.body.name,
-					ingredients: req.body.ingredients,
-					_meals: req.body.mealIDs,
-					updated_at: Date.now()
-				}
-			};
-			var option = {upsert: false};
+			Recipe.findOne({_id: req.params.id}, function(err, recipe){
+				if(err) return res.status(400).send(err);
+				if(!recipe) return res.sendStatus(400);
 
-			Recipe.findOneAndUpdate(query, update, option,
-				function(err, result){
+				for(var i = 0; i < recipe.ingredients.length; ++i){
+					Ingredient.findOne({_id : recipe.ingredients[i]._baseIngredient}, function(err, ingredient){
+						if(err) return;
+						if(!ingredient) return;
+						ingredient._recipeID.pull(recipe._id);
+						ingredient.save(function(err){
+							if(err) console.log("Error: Update Recipe - Remove Reference");
+						});
+					});
+				}
+
+				// Update Recipe
+				recipe.name = req.body.name,
+				recipe.ingredients = req.body.ingredients,
+				recipe.picture = req.body.picture,
+				recipe.updated_at = Date.now()
+
+				recipe.save(function(err){
 					if(err) return res.status(400).send(err);
-					if(!result) return res.sendStatus(400);
-					res.sendStatus(200);
-				}
-			);
-		}
 
+					for(var i = 0; i < recipe.ingredients.length; ++i){
+						Ingredient.findOne({_id : recipe.ingredients[i]._baseIngredient}, function(err, ingredient){
+							if(err) return;
+							if(!ingredient) return;
+							ingredient._recipeID.addToSet(recipe._id);
+							ingredient.save(function(err){
+								if(err) console.log("Error: Update Recipe - Add Reference");
+							});
+						});
+					}
+
+					res.sendStatus(200);
+				});
+			});
+		}
 	}
 
 })();

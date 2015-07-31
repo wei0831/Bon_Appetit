@@ -1,9 +1,27 @@
 var app = angular.module('app',
-['ui.router', 'ngSanitize','mgcrea.ngStrap', 'ngAnimate', 'satellizer', 'angular-jwt', 'ui.slider', 'restangular', 'angularFileUpload', 'dndLists', 'ui.bootstrap']);
+['angularVideoBg', 'ui.router', 'ngSanitize','mgcrea.ngStrap', 'ngAnimate', 'satellizer', 'angular-jwt', 'ui.slider', 'restangular', 'angularFileUpload', 'dndLists']);
 
 app.config(function($stateProvider, $urlRouterProvider, $authProvider, RestangularProvider){
 
   $stateProvider
+  .state('home',{
+    url: '/',
+    views: {
+        "login": { templateUrl: "partials/home.html", controller: 'loginCtrl' }
+    },
+    resolve: {
+     authenticated : function($q, $location, $auth) {
+       var deferred = $q.defer();
+       if (!$auth.isAuthenticated()) {
+         return;
+       } else {
+         $location.path('/dashboard');
+         deferred.resolve();
+       }
+       return deferred.promise;
+     }
+    }
+  })
   .state('user', {
     url: '/user',
     views: {
@@ -14,7 +32,7 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider, Restangul
      authenticated : function($q, $location, $auth) {
        var deferred = $q.defer();
        if (!$auth.isAuthenticated()) {
-         $location.path('/login');
+         $location.path('/');
        } else {
          deferred.resolve();
        }
@@ -27,6 +45,17 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider, Restangul
     views: {
         "nav_top": { templateUrl: "partials/nav_default.html" },
         "main": { templateUrl: "partials/about.html"}
+    },
+    resolve: {
+     authenticated : function($q, $location, $auth) {
+       var deferred = $q.defer();
+       if (!$auth.isAuthenticated()) {
+         $location.path('/');
+       } else {
+         deferred.resolve();
+       }
+       return deferred.promise;
+     }
     }
   })
   .state('ingredients', {
@@ -34,6 +63,17 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider, Restangul
     views: {
         "nav_top": { templateUrl: "partials/nav_default.html" },
         "main": { templateUrl: "partials/ingredients/index.html", controller: 'ingredientsCtrl'}
+    },
+    resolve: {
+     authenticated : function($q, $location, $auth) {
+       var deferred = $q.defer();
+       if (!$auth.isAuthenticated()) {
+         $location.path('/');
+       } else {
+         deferred.resolve();
+       }
+       return deferred.promise;
+     }
     }
   })
   .state('ingredients.view', {
@@ -66,6 +106,17 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider, Restangul
     views: {
         "nav_top": { templateUrl: "partials/nav_default.html" },
         "main": { templateUrl: "partials/recipes/index.html", controller: 'recipesCtrl'}
+    },
+    resolve: {
+     authenticated : function($q, $location, $auth) {
+       var deferred = $q.defer();
+       if (!$auth.isAuthenticated()) {
+         $location.path('/');
+       } else {
+         deferred.resolve();
+       }
+       return deferred.promise;
+     }
     }
   })
   .state('recipes.view', {
@@ -98,6 +149,17 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider, Restangul
     views: {
         "nav_top": { templateUrl: "partials/nav_default.html" },
         "main": { templateUrl: "partials/meals/index.html", controller: 'mealsCtrl'}
+    },
+    resolve: {
+     authenticated : function($q, $location, $auth) {
+       var deferred = $q.defer();
+       if (!$auth.isAuthenticated()) {
+         $location.path('/');
+       } else {
+         deferred.resolve();
+       }
+       return deferred.promise;
+     }
     }
   })
   .state('meals.view', {
@@ -157,11 +219,22 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider, Restangul
     }
   })
   .state('dashboard', {
-    url: '/',
+    url: '/dashboard',
     redirectTo: 'dashboard.menu',
     views: {
         "nav_top": { templateUrl: "partials/nav_default.html" },
         "main": { templateUrl: "partials/dashboard/index.html", controller: 'dashboardCtrl'}
+    },
+    resolve: {
+     authenticated : function($q, $location, $auth) {
+       var deferred = $q.defer();
+       if (!$auth.isAuthenticated()) {
+         $location.path('/');
+       } else {
+         deferred.resolve();
+       }
+       return deferred.promise;
+     }
     }
   })
   .state('dashboard.menu', {
@@ -188,24 +261,35 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider, Restangul
       "content": { templateUrl: "partials/dashboard/index.ingredient.html"}
     }
   })
-  .state('signup', {
-    url: '/signup',
-    views: {
-        "nav_top": { templateUrl: "partials/nav_default.html" },
-        "main": { templateUrl: "partials/signup.html", controller: 'signupCtrl'}
-    }
-  })
-  .state('login', {
-    url: '/login',
-    views: {
-        "nav_top": { templateUrl: "partials/nav_default.html" },
-        "main": { templateUrl: "partials/login.html", controller: 'loginCtrl' }
-    }
-  })
+  // .state('signup', {
+  //   url: '/signup',
+  //   views: {
+  //       "nav_top": { templateUrl: "partials/nav_default.html" },
+  //       "main": { templateUrl: "partials/signup.html", controller: 'signupCtrl'}
+  //   }
+  // })
+  // .state('login', {
+  //   url: '/login',
+  //   views: {
+  //       "nav_top": { templateUrl: "partials/nav_default.html" },
+  //       "main": { templateUrl: "partials/login.html", controller: 'loginCtrl' }
+  //   }
+  // })
   .state('logout', {
     url: '/logout',
     template: null,
-    controller: 'logoutCtrl'
+    resolve: {
+     authenticated : function($q, $location, $auth) {
+       var deferred = $q.defer();
+       if (!$auth.isAuthenticated()) {
+         return;
+       } else {
+         $auth.logout();
+         deferred.resolve();
+       }
+       return deferred.promise;
+     }
+    }
   });
 
   $urlRouterProvider.otherwise('/');

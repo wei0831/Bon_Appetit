@@ -60,13 +60,13 @@ app.controller('ingredientsCtrl', function($state, $scope, $location, $auth, mai
     $scope.modelAsJson = angular.toJson(model, true);
   }, true);
 
-  $scope.addproduct = function(){
+  $scope.add = function(){
     mainFactory.addIngredient($scope.newItem, function(result){
       $window.location.reload();
     });
   }
 
-  $scope.updateproduct = function(){
+  $scope.update = function(){
     mainFactory.updateIngredient($scope.models.selected, function(result){
       $window.location.reload();
     });

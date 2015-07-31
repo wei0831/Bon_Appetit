@@ -62,7 +62,8 @@ a {
 
 .center-form {
   width: 315px;
-  margin: 10% auto;
+  margin: 25% auto;
+  opacity: 0.6;
 }
 
 .signup-or-separator {

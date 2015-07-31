@@ -1,5 +1,59 @@
-<center>
-  <h4 class="icon icon-eye fs1"></h4>
-  <h2>Cooming Soon</h2>
-  <h3>View</h3>
-</center>
+<div style="margin-top:20px;"></div>
+
+<div class="row">
+    <div class="col-md-10">
+      <div dnd-list="models.lists_menus">
+          <div ng-repeat="item in models.lists_menus"
+              dnd-draggable="item"
+              dnd-moved="models.lists_menus.splice($index, 1); check();"
+              dnd-effect-allowed="move"
+              dnd-selected="models.selected = item"
+              ng-class="{'selected': models.selected === item}"
+              class="col-md-6 col-sm-6 panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{item.name}}</h3>
+                </div>
+                <div class="panel-body" ng-repeat="meal in item._meals">
+                  <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{meal.name}}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <h4>Category</h4><div>{{meal.category}}</div>
+                        <h4>Price</h4><div>{{meal.price}}</div>
+                        <h4>Picture</h4><div><img ng-src="{{meal.picture}}" style="width:128px; height:128px;"></div>
+                    </div>
+                  </div>
+                </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="col-md-2">
+      <div class="panel panel-danger" style="position:fixed">
+          <div class="panel-heading">
+              <h3 class="panel-title">Trashcan</h3>
+          </div>
+          <div class="panel-body">
+            <center dnd-list="models.recycle">
+              <i class="icon icon-bin fs1"></i>
+            </center>
+          </div>
+      </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="panel panel-default" bs-collapse start-collapsed="true">
+          <div class="panel-heading" role="tab"  bs-collapse-toggle>
+              <h3 class="panel-title">Menu Model</h3>
+          </div>
+          <div class="panel-collapse" role="tabpanel"  bs-collapse-target>
+            <div class="panel-body">
+                <pre class="code">{{modelAsJson}}</pre>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
