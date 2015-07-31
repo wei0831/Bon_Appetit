@@ -5,6 +5,7 @@ app.controller('navCtrl', function($scope, $location, $auth){
     $scope.navList = [
       {name: "Menus", href:"#/menus"},
       {name: "Meals", href: "#/meals"},
+      {name: "Recipes", href: "#/recipes"},
       {name: "Ingredients", href: "#/ingredients"},
       {name: "About", href: "#/about"}
     ];

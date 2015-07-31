@@ -60,6 +60,38 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider, Restangul
       "content": { templateUrl: "partials/ingredients/index.remove.html"}
     }
   })
+  .state('recipes', {
+    url: '/recipes',
+    redirectTo: 'recipes.view',
+    views: {
+        "nav_top": { templateUrl: "partials/nav_default.html" },
+        "main": { templateUrl: "partials/recipes/index.html", controller: 'recipesCtrl'}
+    }
+  })
+  .state('recipes.view', {
+    views: {
+        "nav_side": { templateUrl: "partials/recipes/index.nav_leftside.html"},
+        "content": { templateUrl: "partials/recipes/index.view.html"}
+    }
+  })
+  .state('recipes.add', {
+    views: {
+      "nav_side": { templateUrl: "partials/recipes/index.nav_leftside.html"},
+      "content": { templateUrl: "partials/recipes/index.add.html"}
+    }
+  })
+  .state('recipes.edit', {
+    views: {
+      "nav_side": { templateUrl: "partials/recipes/index.nav_leftside.html"},
+      "content": { templateUrl: "partials/recipes/index.edit.html"}
+    }
+  })
+  .state('recipes.remove', {
+    views: {
+      "nav_side": { templateUrl: "partials/recipes/index.nav_leftside.html"},
+      "content": { templateUrl: "partials/recipes/index.remove.html"}
+    }
+  })
   .state('meals', {
     url: '/meals',
     redirectTo: 'meals.view',

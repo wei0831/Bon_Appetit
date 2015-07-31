@@ -7,6 +7,9 @@ app.factory('mainFactory', function($http, Restangular){
     return $http.get('/api/v1/me');
   };
 
+/////////////////////////////
+// ingredients
+////////////////////////////
   var baseIngredients = Restangular.all('ingredients');
 
   factory.getIngredients = function(callback) {
@@ -39,6 +42,10 @@ app.factory('mainFactory', function($http, Restangular){
       }
     );
   };
+
+  /////////////////////////////
+  // Recipes
+  ////////////////////////////
 
   return factory;
 });
