@@ -28,8 +28,7 @@
     "angular-slider": "~0.2.14",
     "angular-drag-and-drop-lists": "~1.2.0",
     "angular-sanitize": "~1.4.3",
-    "angular-bootstrap": "~0.13.1",
-    "bootstrap-bower": "~3.0.0"
+    "angular-video-bg": "~0.3.0"
   },
   "overrides": {
     "bootstrap": {
@@ -102,9 +101,9 @@
         "angular-sanitize.min.js"
       ]
     },
-    "angular-bootstrap": {
+    "angular-video-bg":{
       "main": [
-        "ui-bootstrap-tpls.min.js"
+        "angular-video-bg.min.js"
       ]
     }
   }

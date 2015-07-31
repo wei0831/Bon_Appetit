@@ -1,6 +1,6 @@
 var app = angular.module('app');
 
-app.controller('loginCtrl', function($scope, $auth, $alert) {
+app.controller('loginCtrl', function($scope, $auth, $alert, $state) {
 
   $scope.authenticate = function(provider) {
     $auth.authenticate(provider)
@@ -25,10 +25,9 @@ app.controller('loginCtrl', function($scope, $auth, $alert) {
   $scope.userlogin = function() {
     $auth.login($scope.login)
     .then(function(response) {
-     
+      $state.go('dashboard');
     })
     .catch(function(response) {
-      
       $alert({
         content: response.data.message,
         animation: 'fadeZoomFadeDown',
