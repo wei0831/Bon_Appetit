@@ -47,5 +47,31 @@ app.factory('mainFactory', function($http, Restangular){
   // Recipes
   ////////////////////////////
 
+
+
+
+
+///////////////////////////
+// Meals 
+///////////////////////////
+
+var meals = Restangular.all('meals');
+
+factory.getMeals = function(callback) {
+    meals.getList()
+    .then(function(result) {
+      callback(result);
+    });
+  };
+
+  factory.addMeal = function(newItem, callback){
+    
+    meals.post(newItem)
+    .then(function(result) {
+      callback(result);
+    });
+  };
+
+
   return factory;
 });
