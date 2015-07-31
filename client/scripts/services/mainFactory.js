@@ -1,6 +1,6 @@
 var app = angular.module('app');
 
-app.factory('mainFactory', function($http, Restangular){
+app.factory('mainFactory', function($http, Restangular, $window){
   var factory = {};
 
   factory.getProfile = function() {
@@ -46,6 +46,38 @@ app.factory('mainFactory', function($http, Restangular){
   /////////////////////////////
   // Recipes
   ////////////////////////////
+  var recipes = Restangular.all('recipe');
+
+  factory.getRecipes = function(callback) {
+    recipes.getList()
+    .then(function(result) {
+      callback(result);
+    });
+  };
+
+  factory.removeRecipe = function(id, callback) {
+    recipes.one(id).remove()
+    .then(function(result) {
+      callback(result);
+    });
+  };
+
+  factory.addRecipe = function(newItem, callback){
+    recipes.post(newItem)
+    .then(function(result) {
+      callback(result);
+    });
+  };
+
+  factory.updateRecipe = function(updatedItem, callback){
+    Restangular.all('recipe/' + updatedItem["_id"])
+    .customPUT(updatedItem)
+    .then(
+      function(result){
+        callback(result);
+      }
+    );
+  };
 
   return factory;
 });
