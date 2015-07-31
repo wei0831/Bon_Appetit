@@ -24,7 +24,12 @@
     "angular-motion": "~0.4.2",
     "bootswatch-dist": "lumen",
     "angular-file-upload": "~1.2.0",
-    "restangular": "~1.5.1"
+    "restangular": "~1.5.1",
+    "angular-slider": "~0.2.14",
+    "angular-drag-and-drop-lists": "~1.2.0",
+    "angular-sanitize": "~1.4.3",
+    "angular-bootstrap": "~0.13.1",
+    "bootstrap-bower": "~3.0.0"
   },
   "overrides": {
     "bootstrap": {
@@ -79,6 +84,27 @@
     "restangular": {
       "main": [
         "dist/restangular.min.js"
+      ]
+    },
+    "angular-slider": {
+      "main": [
+        "slider.css",
+        "slider.js"
+      ]
+    },
+    "angular-drag-and-drop-lists": {
+      "main": [
+        "angular-drag-and-drop-lists.js"
+      ]
+    },
+    "angular-sanitize": {
+      "main": [
+        "angular-sanitize.min.js"
+      ]
+    },
+    "angular-bootstrap": {
+      "main": [
+        "ui-bootstrap-tpls.min.js"
       ]
     }
   }

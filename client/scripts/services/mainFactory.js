@@ -16,6 +16,20 @@ app.factory('mainFactory', function($http, Restangular){
     });
   };
 
+  factory.removeIngredient = function(id, callback) {
+    baseIngredients.one(id).remove()
+    .then(function(result) {
+      callback(result);
+    });
+  };
+
+  factory.addIngredient = function(newItem, callback){
+    baseIngredients.post(newItem)
+    .then(function(result) {
+      callback(result);
+    });
+  };
+
 
 
   return factory;

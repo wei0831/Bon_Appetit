@@ -1,48 +1,35 @@
+<form ng-submit="addproduct()">
 <div class="dashboard-tab-content" ng-controller="AppController" nv-file-drop="" uploader="uploader">
-
   <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-      <center>
-        <form>
-          <h3 class="text-left">Add Product</h3>
-          <div class="form-group text-left">
-            <label class="left">Product name:</label>
-            <input type="text" class="form-control" placeholder="name">
-          </div>
-          <div class="form-group text-left">
-            <label>Calorie</label>
-            <input id="calorie" class="form-control" placeholder="calorie">
-          </div>
-          <br>
-          <div class="price-slider">
-            <div class="col-sm-12">
-              <div id="slider"></div>
-            </div>
-          </div>
-          <div class="form-group text-left">
-            <label>Price</label>
-            <input id="price" class="form-control" placeholder="price">
-          </div>
-          <br>
-          <div class="price-slider">
-            <div class="col-sm-12">
-              <div id="slider2"></div>
-            </div>
-          </div>
-        </form>
-      </center>
+        <h3 class="text-left">Add ingredient</h3>
+        <div class="form-group text-left">
+          <label class="left">Ingredient Name:</label>
+          <input type="text" class="form-control" ng-model="newItem.name" required>
+        </div>
+
+        <div class="form-group text-left">
+          <label>Calorie: (Optional)</label>
+          <input type="number" class="form-control" ng-model="newItem.calorie">
+        </div>
+        <slider floor="0" ceiling="5000" step="10" precision="1" ng-model="newItem.calorie"></slider>
+
+        <div class="form-group text-left">
+          <label>Picture: (URL)</label>
+          <input type="text" class="form-control" ng-model="newItem.picture">
+        </div>
     </div>
 
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
       <h3>Upload photos</h3>
 
       <div id="dropzone" class="my-drop-zone well" nv-file-over="" uploader="uploader">
-        Base drop zone
+        Drop your photo here.
       </div>
 
       <input type="file" nv-file-select="" uploader="uploader" multiple />
-      <br/>
-      <div style="margin-bottom: 40px">
+
+      <div style="margin-top:20px; margin-bottom: 40px">
         <p>Queue length: {{ uploader.queue.length }}</p>
         <table class="table">
           <thead>
@@ -99,13 +86,19 @@
           </button>
         </div>
       </div>
+
     </div>
+
   </div>
+
 
   <div class="row">
-    <div class="col-md-6">
-      <button type="submit" class="btn btn-success btn-lg">Add product</button>
+    <div class="col-sm-12 col-md-12">
+      <button type="submit" class="form-control btn btn-primary" >Add Ingredient</button>
     </div>
   </div>
 
+  <div style="margin-top:20px"></div>
+
 </div>
+</form>

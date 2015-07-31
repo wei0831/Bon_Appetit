@@ -1,7 +1,8 @@
-var app = angular.module('app', ['ui.router', 'mgcrea.ngStrap', 'ngAnimate', 'satellizer', 'angular-jwt', 'restangular', 'angularFileUpload']);
+var app = angular.module('app',
+['ui.router', 'ngSanitize','mgcrea.ngStrap', 'ngAnimate', 'satellizer', 'angular-jwt', 'ui.slider', 'restangular', 'angularFileUpload', 'dndLists', 'ui.bootstrap']);
 
 app.config(function($stateProvider, $urlRouterProvider, $authProvider, RestangularProvider){
-  
+
 
   $stateProvider
   .state('user', {
