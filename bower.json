@@ -27,7 +27,9 @@
     "restangular": "~1.5.1",
     "angular-slider": "~0.2.14",
     "angular-drag-and-drop-lists": "~1.2.0",
-    "angular-sanitize": "~1.4.3"
+    "angular-sanitize": "~1.4.3",
+    "angular-bootstrap": "~0.13.1",
+    "bootstrap-bower": "~3.0.0"
   },
   "overrides": {
     "bootstrap": {
@@ -95,9 +97,14 @@
         "angular-drag-and-drop-lists.js"
       ]
     },
-    "angular-sanitize":{
+    "angular-sanitize": {
       "main": [
         "angular-sanitize.min.js"
+      ]
+    },
+    "angular-bootstrap": {
+      "main": [
+        "ui-bootstrap-tpls.min.js"
       ]
     }
   }

@@ -1,5 +1,5 @@
 var app = angular.module('app',
-['ui.router', 'ngSanitize','mgcrea.ngStrap', 'ngAnimate', 'satellizer', 'angular-jwt', 'ui.slider', 'restangular', 'angularFileUpload', 'dndLists']);
+['ui.router', 'ngSanitize','mgcrea.ngStrap', 'ngAnimate', 'satellizer', 'angular-jwt', 'ui.slider', 'restangular', 'angularFileUpload', 'dndLists', 'ui.bootstrap']);
 
 app.config(function($stateProvider, $urlRouterProvider, $authProvider, RestangularProvider){
 
