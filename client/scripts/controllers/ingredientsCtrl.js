@@ -70,4 +70,10 @@ app.controller('ingredientsCtrl', function($state, $scope, $location, $auth, mai
     });
   }
 
+  $scope.updateproduct = function(){
+    mainFactory.updateIngredient($scope.models.selected, function(result){
+      $window.location.reload();
+    });
+  }
+
 });

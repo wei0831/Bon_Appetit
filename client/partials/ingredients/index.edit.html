@@ -1,4 +1,66 @@
-<input type="text" placeholder="Search..." ng-model="filter_name">
-<ul ng-repeat="item in ingredients | filter:filter_name |orderBy: 'name'">
-  <li ng-bind="item.name"></li>
-</ul>
+<div class="row">
+  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <h3 class="text-left">Filter ingredient</h3>
+    <div class="form-group">
+      <input type="text" placeholder="Search..." ng-model="filter_name" class="form-control">
+    </div>
+    <form ng-submit="updateproduct()">
+      <h3 class="text-left">Edit ingredient</h3>
+      <div class="form-group text-left">
+        <label class="left">Ingredient Name:</label>
+        <input type="text" class="form-control" ng-model="models.selected.name" required  ng-disabled="models.selected === null">
+      </div>
+
+      <div class="form-group text-left">
+        <label>Calorie: (Optional)</label>
+        <input type="number" class="form-control" ng-model="models.selected.calorie" ng-disabled="models.selected === null">
+      </div>
+      <slider floor="0" ceiling="5000" step="10" precision="1" ng-model="models.selected.calorie"  ng-if="models.selected !== null"></slider>
+
+      <div class="form-group text-left">
+        <label>Picture: (URL)</label>
+        <input type="text" class="form-control" ng-model="models.selected.picture" ng-disabled="models.selected === null">
+      </div>
+      <button type="submit" class="form-control btn btn-primary" ng-disabled="models.selected === null">Update Ingredient</button>
+    </form>
+  </div>
+</div>
+
+
+<div style="margin-top:20px;"></div>
+
+<div class="row">
+    <div class="col-md-12">
+      <div dnd-list="models.lists">
+          <div ng-repeat="item in models.lists | filter:filter_name"
+              dnd-draggable="item"
+              dnd-moved="models.lists.splice($index, 1); check();"
+              dnd-effect-allowed="move"
+              dnd-selected="models.selected = item"
+              ng-class="{'selected': models.selected === item}"
+              class="col-md-3 col-sm-3 panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{item.name}}</h3>
+                </div>
+                <div class="panel-body">
+                    <h4>Calorie</h4><div>{{item.calorie}}</div>
+                    <h4>Picture</h4><div><img ng-src="{{item.picture}}" style="width:128px; height:128px;"></div>
+                </div>
+          </div>
+      </div>
+    </div>
+</div>
+<div class="row">
+  <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Show Debug</button>
+  <hr>
+  <div collapse="isCollapsed">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Generated Model</h3>
+        </div>
+        <div class="panel-body">
+            <pre class="code">{{modelAsJson}}</pre>
+        </div>
+    </div>
+  </div>
+</div>

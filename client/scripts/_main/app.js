@@ -3,7 +3,6 @@ var app = angular.module('app',
 
 app.config(function($stateProvider, $urlRouterProvider, $authProvider, RestangularProvider){
 
-
   $stateProvider
   .state('user', {
     url: '/user',

@@ -30,7 +30,15 @@ app.factory('mainFactory', function($http, Restangular){
     });
   };
 
-
+  factory.updateIngredient = function(updatedItem, callback){
+    Restangular.all('ingredients/' + updatedItem["_id"])
+    .customPUT(updatedItem)
+    .then(
+      function(result){
+        callback(result);
+      }
+    );
+  };
 
   return factory;
 });
