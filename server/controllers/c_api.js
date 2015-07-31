@@ -1,3 +1,7 @@
+// Author: Malik Nur
+// Date: 07/29/2015
+// API Controller
+
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var secret = "ilovebanana";
@@ -5,17 +9,28 @@ var jwt = require('jsonwebtoken');
 var request = require('request');
 var moment = require('moment');
 
-var Ingredient = mongoose.model('Ingredient');
+var Ingredient = mongoose.model('BaseIngredient');
 var Recipe = mongoose.model('Recipe');
 var Meal = mongoose.model('Meal');
+var Menu = mongoose.model('Menu');
 
 
-	//function to remove unnessary attributes from JSON response
+//function to remove unnessary attributes from JSON response
    function sanitizeJSON(result){
      	for(var index in result){
      		result[index].created_at = undefined;
-			result[index].updated_at = undefined;
-			result[index].__v = undefined;
+		result[index].updated_at = undefined;
+		result[index].__v = undefined;
+            
+            if(result[index]._meals !== undefined){
+            
+                  for(var idx in result[index]._meals){
+                        result[index]._meals[idx].created_at = undefined;
+                        result[index]._meals[idx].updated_at = undefined;
+                        result[index]._meals[idx].__v = undefined;
+                  }
+            }            
+
      	}
      	return result;
      } 
@@ -63,9 +78,8 @@ module.exports = (function(){
       recipeFindByName: function(req, res){
 
       		var name = req.query.name;
-      		console.log(req.path)
       		
-      		Recipe.find({"name": name})
+      		Recipe.find({"name": new RegExp(name, "i")})
       		.exec(function(err, result){
       			if(err) return res.status(400).send(err);
 
@@ -76,6 +90,110 @@ module.exports = (function(){
 
       		})
       },
+
+
+
+/////////////////////////////////////////////
+// Ingredient API               
+////////////////////////////////////////////
+
+      ingredientShowAll: function(req, res){
+
+                  Ingredient.find({})
+                  .exec(function(err, result){
+                        if(err) return res.status(400).send(err);
+                        
+                        var result = sanitizeJSON(result);  
+
+                        res.status(200).json(result);
+                        result = "";
+                  })
+      },
+
+      ingredientShowOne: function(req, res){
+
+                  Ingredient.find({_id: req.params.id})
+                  .exec(function(err, result){
+                        if(err) return res.status(400).send(err);
+
+                        var result = sanitizeJSON(result);  
+
+                        res.status(200).json(result);
+                        result = "";
+                  })
+
+      },
+
+      ingredientFindByName: function(req, res){
+
+                  var name = req.query.name;
+                               
+                  Ingredient.find({"name": new RegExp(name, "i")})
+                  .exec(function(err, result){
+                        if(err) return res.status(400).send(err);
+
+                        var result = sanitizeJSON(result);  
+
+                        res.status(200).json(result);
+                        result = "";
+
+                  })
+      },
+
+
+
+/////////////////////////////////////////////
+// Menu API               
+////////////////////////////////////////////
+
+      menuShowAll: function(req, res){
+
+                  Menu.find({})
+                  .populate('_meals')
+                  .exec(function(err, result){
+                        if(err) return res.status(400).send(err);
+                        
+                     
+                        var result = sanitizeJSON(result);
+
+                        res.status(200).json(result);
+                        result = "";
+                  })
+      },
+
+      menuShowOne: function(req, res){
+
+                  Menu.find({_id: req.params.id})
+                  .populate('_meals')
+                  .exec(function(err, result){
+                        if(err) return res.status(400).send(err);
+
+                        var result = sanitizeJSON(result);
+
+                        res.status(200).json(result);
+                        result = "";
+                  })
+
+      },
+
+      menuFindByName: function(req, res){
+
+                  var name = req.query.name;
+                               
+                  Menu.find({"name": new RegExp(name, "i")})
+                  .populate('_meals')
+                  .exec(function(err, result){
+                        if(err) return res.status(400).send(err);
+
+                        var result = sanitizeJSON(result);  
+
+                        res.status(200).json(result);
+                        result = "";
+
+                  })
+      },
+
+
 
 
 

@@ -44,6 +44,52 @@ module.exports = function(app) {
   });
 
 
+
+  //////////////////////////////////////
+  // API INGREDIENTS
+  /////////////////////////////////////
+
+
+  app.get('/api/v1/ingredients/', function(req, res) {
+
+    api.ingredientShowAll(req, res);
+
+  });
+
+  app.get('/api/v1/ingredients/q', function(req, res) {
+    api.ingredientFindByName(req, res);
+  });
+
+  app.get('/api/v1/ingredients/:id', function(req, res) {
+    api.ingredientShowOne(req, res);
+  });
+
+
+
+  //////////////////////////////////////
+  // API MENUS
+  /////////////////////////////////////
+
+
+  app.get('/api/v1/menus/', function(req, res) {
+
+    api.menuShowAll(req, res);
+
+  });
+
+  app.get('/api/v1/menus/q', function(req, res) {
+    api.menuFindByName(req, res);
+  });
+
+  app.get('/api/v1/menus/:id', function(req, res) {
+    api.menuShowOne(req, res);
+  });
+
+
+
+
+
+
   //////////////////////////////////////
   // API MEAL
   /////////////////////////////////////
