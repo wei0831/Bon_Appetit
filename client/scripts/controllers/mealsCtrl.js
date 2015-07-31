@@ -112,7 +112,7 @@ app.controller('mealsCtrl', function($state, $scope, $location, $auth, mainFacto
       "name" : $scope.newItem.name,
       "price" : $scope.newItem.price,
       "picture" : $scope.newItem.picture,
-      "category" : $scope.newItem.category,
+      "category" : $scope.newItem.category.name,
       "ingredients" : [],
       "recipeIDs" : []
     };
