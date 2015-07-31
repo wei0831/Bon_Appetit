@@ -46,7 +46,7 @@ app.factory('mainFactory', function($http, Restangular, $window){
   /////////////////////////////
   // Recipes
   ////////////////////////////
-  var recipes = Restangular.all('recipe');
+  var recipes = Restangular.all('recipes');
 
   factory.getRecipes = function(callback) {
     recipes.getList()
@@ -70,7 +70,7 @@ app.factory('mainFactory', function($http, Restangular, $window){
   };
 
   factory.updateRecipe = function(updatedItem, callback){
-    Restangular.all('recipe/' + updatedItem["_id"])
+    Restangular.all('recipes/' + updatedItem["_id"])
     .customPUT(updatedItem)
     .then(
       function(result){
