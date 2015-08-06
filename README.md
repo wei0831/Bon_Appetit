@@ -22,16 +22,16 @@ npm install && bower install && grunt default
 ```
 
 ## Screen Shots
-**Login Page to Admin Site : **
+__Login Page to Admin Site :__
 ![Login Window](/screenshots/loginpage.png?raw=true)
 
-**Add Recipe in Admin Site : **
+__Add Recipe in Admin Site :__
 ![Add Recipe](/screenshots/add_recipe.png?raw=true)
 
-**View Meals in Admin Site : **
+__View Meals in Admin Site :__
 ![View Meals](/screenshots/meals.png?raw=true)
 
-**Access Online Menu API using ajax call : **
+__Access Online Menu API using ajax call :__
 ![Thirdparty Access API](/screenshots/thirdpartydemo.png?raw=true)
 
 ## Author
