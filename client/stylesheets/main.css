@@ -1,71 +1,64 @@
-.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
-
+.nav, .pagination, .carousel, .panel-title a {
+  cursor: pointer;
+}
 body {
   background-color: #d8d8d8;
 }
-
 a {
   color: #3f729b;
 }
-  a:hover {
-    color: #1c5380;
-  }
-
+a:hover {
+  color: #1c5380;
+}
 .text-muted {
   color: #90939a;
 }
-
-.navActive{
+.navActive {
   background-color: lightgrey;
   color: white !important;
 }
-
-.selected{
+.selected {
   border: 2px red solid;
 }
-
 .navbar {
   min-height: 50px;
   border: 0;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
 }
-  .navbar-header {
-    float: left;
-    padding-left: 15px;
-  }
-  .navbar-brand {
-    height: 50px;
-    padding: 0 15px;
-    font-size: 18px;
-    line-height: 50px;
-    font-weight: bold;
-  }
-  .navbar-nav {
-    float: left;
-    margin: 0;
-  }
-  .navbar-nav > li {
-    float: left;
-  }
-  .navbar-nav > li > a {
-    padding: 0 15px;
-    line-height: 50px;
-  }
-  .navbar-text {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-
-.panel{
+.navbar-header {
+  float: left;
+  padding-left: 15px;
+}
+.navbar-brand {
+  height: 50px;
+  padding: 0 15px;
+  font-size: 18px;
+  line-height: 50px;
+  font-weight: bold;
+}
+.navbar-nav {
+  float: left;
+  margin: 0;
+}
+.navbar-nav > li {
+  float: left;
+}
+.navbar-nav > li > a {
+  padding: 0 15px;
+  line-height: 50px;
+}
+.navbar-text {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.panel {
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .26);
 }
-
 .center-form {
   width: 315px;
   margin: 25% auto;
   opacity: 0.6;
 }
-
 .signup-or-separator {
   position: relative;
   height: 29px;
@@ -73,20 +66,17 @@ a {
   text-align: center;
   background: none;
 }
-
 .signup-or-separator hr {
   width: 90%;
   margin: -16px auto 10px auto;
   border-top: 1px solid #dce0e0;
 }
-
 .signup-or-separator .text {
   display: inline-block;
   padding: 8px;
   margin: 0;
   background-color: #fff;
 }
-
 .has-feedback .form-control-feedback {
   top: 0;
   left: 0;
@@ -95,27 +85,22 @@ a {
   line-height: 46px;
   color: #555;
 }
-
 .has-feedback .form-control {
   padding-left: 42px;
 }
-
 .media-object {
   display: inline-block;
   width: 32px;
   height: 32px;
 }
-
 .media-heading {
   display: block;
   margin: 0;
   color: #3f729b;
 }
-
 .media-heading:hover {
   color: #1c5380;
 }
-
 .soften {
   height: 1px;
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .1), rgba(0, 0, 0, 0));
@@ -123,13 +108,11 @@ a {
   background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .1), rgba(0, 0, 0, 0));
   border: 0;
 }
-
 .thumbnail {
   border: 0;
   border-radius: 0;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, .04),0 1px 5px rgba(0, 0, 0, .1);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .04), 0 1px 5px rgba(0, 0, 0, .1);
 }
-
 .alert-error {
   position: fixed;
   right: 12px;
@@ -146,12 +129,9 @@ a {
   outline: none;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
-
 .alert-error > .close {
   margin-left: 12px;
 }
-
-
 .alert-material {
   position: fixed;
   right: 12px;
@@ -168,12 +148,10 @@ a {
   outline: none;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
-
 .alert-material > .close {
   margin-left: 12px;
   color: white;
 }
-
 .fadeZoom.ng-enter {
   -webkit-animation-duration: 0.2s, 0.2s;
   -moz-animation-duration: 0.2s, 0.2s;
@@ -184,7 +162,6 @@ a {
   -ms-animation-name: fadeIn, zoomIn;
   animation-name: fadeIn, zoomIn;
 }
-
 .fadeZoomFadeDown.ng-enter {
   -webkit-animation-duration: 0.2s, 0.2s;
   -moz-animation-duration: 0.2s, 0.2s;
@@ -195,14 +172,12 @@ a {
   -ms-animation-name: fadeIn, zoomIn;
   animation-name: fadeIn, zoomIn;
 }
-
 .fadeZoomFadeDown.ng-leave {
   -webkit-animation: fadeOutDown 0.2s;
   -moz-animation: fadeOutDown 0.2s;
   -ms-animation: fadeOutDown 0.2s;
   animation: fadeOutDown 0.2s;
 }
-
 @-webkit-keyframes zoomIn {
   0% {
     opacity: 0;
@@ -211,12 +186,10 @@ a {
     -ms-transform: scale3d(0.8, 0.8, 0.8);
     transform: scale3d(0.8, 0.8, 0.8);
   }
-
   50% {
     opacity: 1;
   }
 }
-
 @keyframes zoomIn {
   0% {
     opacity: 0;
@@ -225,27 +198,22 @@ a {
     -ms-transform: scale3d(0.8, 0.8, 0.8);
     transform: scale3d(0.8, 0.8, 0.8);
   }
-
   50% {
     opacity: 1;
   }
 }
-
-
-.my-drop-zone { border: dotted 2px lightgray; }
-
-
+.my-drop-zone {
+  border: dotted 2px lightgray;
+}
 canvas {
-                background-color: #f3f3f3;
-                -webkit-box-shadow: 3px 3px 3px 0 #e3e3e3;
-                -moz-box-shadow: 3px 3px 3px 0 #e3e3e3;
-                box-shadow: 3px 3px 3px 0 #e3e3e3;
-                border: 1px solid #c3c3c3;
-                height: 100px;
-                margin: 6px 0 0 6px;
-            }
-
-
+  background-color: #f3f3f3;
+  -webkit-box-shadow: 3px 3px 3px 0 #e3e3e3;
+  -moz-box-shadow: 3px 3px 3px 0 #e3e3e3;
+  box-shadow: 3px 3px 3px 0 #e3e3e3;
+  border: 1px solid #c3c3c3;
+  height: 100px;
+  margin: 6px 0 0 6px;
+}
 
 /* SLIDER CUSTOMIZATION */
 
@@ -255,18 +223,15 @@ canvas {
   color: #222222;
   margin-top: 4px;
 }
-
-.ui-state-default, .ui-widget-content .ui-state-default{
-background:transparent !important;
-border:none !important;
+.ui-state-default, .ui-widget-content .ui-state-default {
+  background: transparent !important;
+  border: none !important;
 }
-.ui-slider .ui-slider-handle label{
-
-    background: lightgray;
-    border-radius: 20px;
-    width:5.2em;
+.ui-slider .ui-slider-handle label {
+  background: lightgray;
+  border-radius: 20px;
+  width: 5.2em;
 }
-
 .ui-slider .ui-slider-handle {
   position: absolute;
   z-index: 2;
@@ -278,47 +243,35 @@ border:none !important;
   line-height: 35px;
   color: #FFFFFF;
   font-size: 15px;
-
 }
-
 .ui-slider .ui-slider-handle .glyphicon {
   color: #FFFFFF;
   margin: 0 3px;
   font-size: 11px;
   opacity: 0.5;
 }
-
 .ui-slider-horizontal .ui-slider-handle {
   top: -.9em;
 }
-
-.ui-state-default,
-.ui-widget-content .ui-state-default {
+.ui-state-default, .ui-widget-content .ui-state-default {
   border: 1px solid #f9f9f9;
   background: #3498db;
-
 }
-
 .ui-slider-horizontal .ui-slider-handle {
   margin-left: -0.5em;
 }
-
 .ui-slider .ui-slider-handle {
   cursor: pointer;
 }
-
-.ui-slider a,
-.ui-slider a:focus {
+.ui-slider a, .ui-slider a:focus {
   cursor: pointer;
   outline: none;
 }
-
 .price-slider {
   margin-bottom: 30px;
   margin-left: 10px;
   margin-right: 10px;
 }
-
 .price-slider span {
   font-weight: 200;
   display: inline-block;

@@ -1,3 +1,8 @@
+/**
+ * Author: Jack Chang
+ * Data: 07/31/2015
+ */
+
 var app = angular.module('app');
 
 app.controller('ingredientsCtrl', function($state, $scope, $location, $auth, mainFactory, $window) {
@@ -46,28 +51,27 @@ app.controller('ingredientsCtrl', function($state, $scope, $location, $auth, mai
   });
   // hard coded
   $scope.check = function() {
-      if($scope.models.recycle.length > 0)
-      {
-        if($scope.models.selected && $scope.models.selected["_id"] == $scope.models.recycle[0]["_id"])
-          $scope.models.selected = null;
-        mainFactory.removeIngredient($scope.models.recycle[0]["_id"], function(result){
-          $scope.models.recycle.pop();
-        });
-      }
+    if ($scope.models.recycle.length > 0) {
+      if ($scope.models.selected && $scope.models.selected["_id"] == $scope.models.recycle[0]["_id"])
+        $scope.models.selected = null;
+      mainFactory.removeIngredient($scope.models.recycle[0]["_id"], function(result) {
+        $scope.models.recycle.pop();
+      });
+    }
   };
 
   $scope.$watch('models', function(model) {
     $scope.modelAsJson = angular.toJson(model, true);
   }, true);
 
-  $scope.add = function(){
-    mainFactory.addIngredient($scope.newItem, function(result){
+  $scope.add = function() {
+    mainFactory.addIngredient($scope.newItem, function(result) {
       $window.location.reload();
     });
   }
 
-  $scope.update = function(){
-    mainFactory.updateIngredient($scope.models.selected, function(result){
+  $scope.update = function() {
+    mainFactory.updateIngredient($scope.models.selected, function(result) {
       $window.location.reload();
     });
   }

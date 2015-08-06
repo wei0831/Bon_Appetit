@@ -101,7 +101,7 @@
         "angular-sanitize.min.js"
       ]
     },
-    "angular-video-bg":{
+    "angular-video-bg": {
       "main": [
         "angular-video-bg.min.js"
       ]

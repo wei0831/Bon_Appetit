@@ -1,3 +1,8 @@
+/**
+ * Author: Jack Chang
+ * Data: 07/31/2015
+ */
+
 module.exports = function(grunt) {
   grunt.initConfig({
     clean: [
@@ -27,5 +32,4 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-injector');
 
   grunt.registerTask('default', ['wiredep', 'injector']);
-
 }

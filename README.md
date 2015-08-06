@@ -1,23 +1,25 @@
-# Bon Appetit - Restaurant Framework
-CodingDojo 2015 Full Mean Stack Project
+# Bon Appetit - Share Menu Online
+CodingDojo 2015 Full Mean Stack 4 Days Project  
 
-Modified Date: 07/28/2015
+**_Bon Appetit_** is a prototype framework allow to share restaurant's menu online with RESTful API access for 3rd party app integration.
 
-##To Run
+## Status
+Under development.
+
+## Tools required
+```
+brew install node
+npm install -g grunt-cli
+npm install -g bower
+```
+
+## Update Dependencies
 Run the following command
 ```
 npm install && bower install && grunt default
 ```
 
-##Technology Used
-- Nodejs
-- Express.js
-- AngularJs
-- MongoDB
-- Bootstrap
-- JWT (json web token)
-
-##Author
+## Author
 **[Jack Chang]** : [![endorse](https://api.coderwall.com/wei0831/endorsecount.png)](https://coderwall.com/wei0831)  
 **[Malik Nur]**
 
