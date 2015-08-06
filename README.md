@@ -19,6 +19,19 @@ Run the following command
 npm install && bower install && grunt default
 ```
 
+## Screen Shots
+![Login Window](/screenshots/loginpage.png?raw=true)
+
+![Login Window](/screenshots/add_ingre.png?raw=true)
+
+![Login Window](/screenshots/add_recipe.png?raw=true)
+
+![Login Window](/screenshots/add_meal.png?raw=true)
+
+![Login Window](/screenshots/meals.png?raw=true)
+
+![Login Window](/screenshots/thirdpartydemo.png?raw=true)
+
 ## Author
 **[Jack Chang]** : [![endorse](https://api.coderwall.com/wei0831/endorsecount.png)](https://coderwall.com/wei0831)  
 **[Malik Nur]**
