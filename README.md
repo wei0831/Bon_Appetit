@@ -20,17 +20,17 @@ npm install && bower install && grunt default
 ```
 
 ## Screen Shots
+**Login Page to Admin Site : **
 ![Login Window](/screenshots/loginpage.png?raw=true)
 
-![Login Window](/screenshots/add_ingre.png?raw=true)
+**Add Recipe in Admin Site : **
+![Add Recipe](/screenshots/add_recipe.png?raw=true)
 
-![Login Window](/screenshots/add_recipe.png?raw=true)
+**View Meals in Admin Site : **
+![View Meals](/screenshots/meals.png?raw=true)
 
-![Login Window](/screenshots/add_meal.png?raw=true)
-
-![Login Window](/screenshots/meals.png?raw=true)
-
-![Login Window](/screenshots/thirdpartydemo.png?raw=true)
+**Access Online Menu API using ajax call : **
+![Thirdparty Access API](/screenshots/thirdpartydemo.png?raw=true)
 
 ## Author
 **[Jack Chang]** : [![endorse](https://api.coderwall.com/wei0831/endorsecount.png)](https://coderwall.com/wei0831)  
