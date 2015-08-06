@@ -1,10 +1,12 @@
 # Bon Appetit - Share Menu Online
-CodingDojo 2015 Full Mean Stack 4 Days Project  
+CodingDojo 2015 Full Mean Stack Project
 
-**_Bon Appetit_** is a prototype framework allow to share restaurant's menu online with RESTful API access for 3rd party app integration.
+**_Bon Appetit_** is a prototype framework to manage and share food menu online with built-in RESTful API access for 3rd party app integration.
 
-## Status
-Under development.
+It was done within 4 days from scratch to deployment.
+
+## Project Status
+Completed enough to demonstrate the idea and functionalities.
 
 ## Tools required
 ```
