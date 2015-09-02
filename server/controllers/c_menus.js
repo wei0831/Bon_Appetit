@@ -1,6 +1,7 @@
-// Author: Jack Chang
-// Date: 07/28/2015
-// Meal Controller
+/**
+ * Author: Jack Chang
+ * Data: 07/31/2015
+ */
 
 var mongoose = require('mongoose'),
 		Meal = mongoose.model('Meal'),

@@ -1,8 +1,13 @@
+/**
+ * Author: Jack Chang
+ * Data: 07/31/2015
+ */
+
 var app = angular.module('app');
 
 app.controller('signupCtrl', function($scope, $alert, $auth) {
-    $scope.usersignup = function() {
-      $auth.signup($scope.signup)
+  $scope.usersignup = function() {
+    $auth.signup($scope.signup)
       .then(function(response) {
 
       })
@@ -25,5 +30,5 @@ app.controller('signupCtrl', function($scope, $alert, $auth) {
           });
         }
       });
-    };
+  };
 });

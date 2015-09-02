@@ -1,3 +1,8 @@
+/**
+ * Author: Jack Chang
+ * Data: 07/31/2015
+ */
+
 var app = angular.module('app');
 
 app.controller('userCtrl', function($scope, $alert, mainFactory) {
