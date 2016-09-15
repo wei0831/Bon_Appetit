@@ -35,7 +35,7 @@ __Access Online Menu API using ajax call :__
 ![Thirdparty Access API](/screenshots/thirdpartydemo.png?raw=true)
 
 ## Author
-**[Jack Chang]**
+**[Jack Chang]**  
 **[Malik Nur]**
 
 [Jack Chang]: https://wei0831.net
