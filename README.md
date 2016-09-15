@@ -35,8 +35,8 @@ __Access Online Menu API using ajax call :__
 ![Thirdparty Access API](/screenshots/thirdpartydemo.png?raw=true)
 
 ## Author
-**[Jack Chang]** : [![endorse](https://api.coderwall.com/wei0831/endorsecount.png)](https://coderwall.com/wei0831)  
+**[Jack Chang]**
 **[Malik Nur]**
 
-[Jack Chang]: https://about.me/wei0831
+[Jack Chang]: https://wei0831.net
 [Malik Nur]: https://www.linkedin.com/pub/malik-nur/b7/25a/2a8
